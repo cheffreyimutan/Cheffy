@@ -1,279 +1,365 @@
-import React, { useState, useEffect } from 'react';
-import { ShoppingCart, MessageSquare, Instagram, Facebook, Mail, ChevronDown, Smile, Tag, Leaf } from 'lucide-react';
-
-// Data for Featured Crystals
-const crystalData = [
-  { imgSrc: "images/crystal-display.jpg", alt: "Authentic healing crystals collection Philippines", title: "Crystal Collections", desc: "Find Your Perfect Energy" },
-  { imgSrc: "images/assorted-crystals.jpeg", alt: "Assorted tumbled gemstones Philippines", title: "Assorted Tumbles", desc: "Carry Good Vibes With You" },
-  { imgSrc: "images/moss-agate.jpg", alt: "Authentic Moss Agate crystal for abundance", title: "Moss Agate", desc: "Abundance & New Beginnings" }
-];
-
-// Data for FAQs
-const faqData = [
-  { q: "Are your crystals authentic?", a: "Yes! All our crystals are 100% authentic spiritual stones, carefully sourced for their quality and energy." },
-  { q: "Where is the best place to buy crystals in the Philippines?", a: "We recommend ordering through our official store at www.cheffyscrystals.shop to get an additional 10% discount and the best prices." },
-  { q: "What types of healing crystals do you sell?", a: "We sell a wide variety of healing crystals, including raw crystals, tumbled stones, and popular gemstones like amethyst, clear quartz, rose quartz, citrine, and moss agate." },
-  { q: "Do you ship to Cebu, Davao, and outside Manila?", a: "Yes! We offer nationwide shipping across the Philippines and international shipping to Malaysia and Singapore via Shopee." },
-  { q: "Are there holes in the crystals for jewelry making?", a: "By default, our crystals do not have holes. If you need drilled crystals, please message us first before placing an order." },
-  { q: "Do you accept same-day delivery?", a: "We currently do not offer Lalamove or other same-day delivery services. All orders are processed through our e-commerce platforms for standard shipping." },
-  { q: "How do I know which crystal is right for me?", a: "Trust your intuition! We usually say to choose the crystal that \"calls\" to you first. You can also check our social media for guides on crystal meanings." },
-  { q: "What payment methods do you accept?", a: "We accept all standard payment options provided by our shop partners, including GCash, COD, and Credit/Debit cards." }
-];
-
-const Navbar = () => (
-  <header className="p-4 md:p-6 sticky top-0 z-50 bg-gray-900/60 backdrop-blur-lg border-b border-white/10">
-    <div className="container mx-auto flex justify-between items-center">
-      <div className="flex items-center gap-3">
-        <img src="images/logo.png" alt="Cheffy's Crystals" className="h-10 w-10 md:h-12 md:w-12 rounded-full" />
-        <h1 className="text-xl md:text-2xl font-bold tracking-wider bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text text-transparent">Cheffy's Crystals</h1>
-      </div>
-      <nav className="hidden lg:flex gap-6 text-sm font-bold uppercase tracking-widest">
-        <a href="https://www.cheffyscrystals.shop" className="text-purple-400 hover:text-white transition-colors">Shop Direct</a>
-        <a href="#about" className="hover:text-purple-400 transition-colors">About</a>
-        <a href="#blog" className="hover:text-purple-400 transition-colors">Blog</a>
-        <a href="#events" className="hover:text-purple-400 transition-colors">Events</a>
-        <a href="#featured" className="hover:text-purple-400 transition-colors">Crystals</a>
-        <a href="#socials" className="hover:text-purple-400 transition-colors">Socials</a>
-        <a href="#faq" className="hover:text-purple-400 transition-colors">FAQ</a>
-      </nav>
-      <a href="https://www.cheffyscrystals.shop" className="bg-purple-600 px-6 py-2 rounded-full text-sm font-bold shadow-lg hover:bg-purple-700 transition-all">Shop Direct</a>
-    </div>
-  </header>
-);
-
-const FAQAccordion = ({ question, answer }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <div className="border-b border-white/10 last:border-0">
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex justify-between items-center py-6 text-left hover:text-purple-300 transition-colors"
-      >
-        <span className="text-lg font-semibold">{question}</span>
-        <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
-      </button>
-      <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 pb-6' : 'max-h-0'}`}>
-        <p className="text-gray-400 leading-relaxed">{answer}</p>
-      </div>
-    </div>
-  );
-};
-
-export default function App() {
-  useEffect(() => {
-    const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap';
-    link.rel = 'stylesheet';
-    document.head.appendChild(link);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    const style = document.createElement('style');
-    style.innerHTML = `
-      body { background-color: #1a0f2b; background-image: url('images/crystal-background.png'); background-attachment: fixed; background-size: cover; }
-      .signature-font { font-family: 'Dancing Script', cursive; }
-      .article-dropcap::first-letter { float: left; font-size: 4.5rem; line-height: 1; padding-right: 0.75rem; font-weight: 900; color: #a78bfa; }
-    `;
-    document.head.appendChild(style);
-  }, []);
+    <!-- Primary Meta Tags -->
+    <title>Authentic Healing Crystals Philippines | Starting ₱20 | Cheffy's Crystals</title>
+    <meta name="title" content="Authentic Healing Crystals Philippines | Starting ₱20 | Cheffy's Crystals">
+    <meta name="description" content="Shop affordable healing crystals in the Philippines starting at ₱20. Get 10% OFF when you buy direct from our official store. Nationwide delivery to Manila, Cebu, and Davao.">
+    <meta name="keywords" content="crystals philippines, healing crystals manila, affordable gemstones philippines, authentic crystals shop, buy crystals online philippines, chakra stones, rose quartz amethyst philippines">
+    <meta name="author" content="Cheffy">
 
-  return (
-    <div className="min-h-screen text-gray-200 selection:bg-purple-500 selection:text-white">
-      <Navbar />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.cheffyscrystals.shop/">
+    <meta property="og:title" content="Authentic Healing Crystals Philippines | Cheffy's Crystals">
+    <meta property="og:description" content="Bringing affordable and authentic healing gemstones to every Filipino home. Starting at only ₱20. Shop direct and save 10%!">
+    <meta property="og:image" content="images/logo.png">
 
-      <main className="container mx-auto px-4 py-8 md:py-16 space-y-24">
-        
-        {/* Hero Section */}
-        <section className="text-center py-20 md:py-32 rounded-3xl bg-gray-900/40 border border-purple-500/20 backdrop-blur-md relative overflow-hidden">
-          <div className="max-w-3xl mx-auto px-4 relative z-10">
-            <img src="images/logo.png" alt="Cheffy's Crystals Official Logo" className="mx-auto h-32 w-32 md:h-40 md:w-40 rounded-full mb-8 shadow-2xl shadow-purple-500/30" />
-            <h1 className="text-4xl md:text-7xl font-extrabold text-white leading-tight mb-6 tracking-tight">
-              The Best Affordable <span className="bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text text-transparent font-black">Crystal Store in PH</span>
-            </h1>
-            <p className="text-lg md:text-xl text-purple-200 mb-10 font-light italic">
-              Skip the high markups of big malls. Buy authentic crystals direct and save more on your healing journey.
-            </p>
-            <div className="flex flex-col items-center gap-4">
-              <a href="https://www.cheffyscrystals.shop" className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-purple-400 text-white font-black py-5 px-12 rounded-full text-xl hover:scale-105 transition-all shadow-2xl">
-                🛒 SHOP OUR OFFICIAL STORE
-              </a>
-              <p className="text-purple-400 font-bold tracking-widest uppercase text-xs animate-pulse bg-purple-900/40 px-4 py-1 rounded-full border border-purple-400/30">
-                🎁 10% OFF WHEN YOU BUY DIRECT
-              </p>
-            </div>
-          </div>
-        </section>
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.cheffyscrystals.shop/">
+    <meta property="twitter:title" content="Authentic Healing Crystals Philippines | Cheffy's Crystals">
+    <meta property="twitter:description" content="Shop affordable healing crystals in the Philippines. Sourced with love, sold with honesty. Starting at ₱20.">
+    <meta property="twitter:image" content="images/logo.png">
 
-        {/* About Section */}
-        <section id="about" className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-gray-900/40 p-8 md:p-12 rounded-[3rem] border border-white/5">
-          <div className="space-y-6">
-            <h2 className="text-4xl font-bold gradient-text">Authentic Crystals, Real Intentions</h2>
-            <p className="text-lg text-gray-300 leading-relaxed font-light">
-              Searching for an <strong>affordable gemstone shop in Manila</strong> that doesn't compromise on quality? At Cheffy’s Crystals, we believe energy work should be for everyone.
-            </p>
-            <p className="text-lg text-gray-300 leading-relaxed font-light">
-              We offer authentic healing crystals shipped nationwide—from <strong>Metro Manila to Cebu and Davao</strong>. Our collection starts as low as <strong className="text-purple-300 font-bold">₱20</strong>, making spiritual wellness accessible to all Filipinos.
-            </p>
-            <div className="pt-6 border-t border-white/10">
-              <h3 className="text-2xl font-bold text-white mb-2 tracking-tight">Our Mission</h3>
-              <p className="text-gray-400">To provide high-quality, authentic spiritual stones at honest prices, ensuring every Filipino can manifest abundance and positivity.</p>
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,0 100,50 50,100 0,50' fill='%23a78bfa'/></svg>">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Local Business Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "OnlineStore",
+      "name": "Cheffy's Crystals",
+      "description": "The best affordable crystal store in the Philippines. Providing authentic healing crystals like Rose Quartz, Amethyst, and Citrine since the pandemic.",
+      "url": "https://www.cheffyscrystals.shop", 
+      "logo": "https://www.cheffyscrystals.shop/images/logo.png",
+      "priceRange": "₱",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Philippines"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "storetgf@gmail.com",
+        "contactType": "Customer Service"
+      }
+    }
+    </script>
+    
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a0f2b;
+            background-image: url('images/crystal-background.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details > summary::after {
+            content: '+';
+            float: right;
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s ease-in-out;
+        }
+        details[open] > summary::after { transform: rotate(45deg); }
+        .glass-card {
+            background: rgba(31, 41, 55, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #a78bfa, #c4b5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cta-primary {
+            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+        }
+        @keyframes subtle-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        .discount-badge { animation: subtle-pulse 2s infinite ease-in-out; }
+        .article-dropcap::first-letter {
+            font-family: 'Poppins', sans-serif;
+            float: left;
+            font-size: 4.5rem;
+            line-height: 1;
+            padding-right: 0.75rem;
+            font-weight: 900;
+            color: #a78bfa;
+        }
+        .signature { font-family: 'Dancing Script', cursive; }
+    </style>
+</head>
+<body class="text-gray-200">
+    <header class="p-4 md:p-6 sticky top-0 z-50 glass-card">
+        <div class="container mx-auto flex justify-between items-center">
+             <div class="flex items-center gap-3">
+                <img src="images/logo.png" alt="Cheffy's Crystals Philippines Logo" class="h-10 w-10 md:h-12 md:w-12 rounded-full">
+                <h1 class="text-xl md:text-2xl font-bold tracking-wider gradient-text">Cheffy's Crystals</h1>
             </div>
-          </div>
-          <div className="relative group">
-            <img src="images/owner-photo.jpg" alt="Cheffy, Founder of Cheffy's Crystals Philippines" className="rounded-[2rem] shadow-2xl shadow-purple-900/30 w-full h-auto object-cover transform transition-transform group-hover:scale-[1.02]" />
-          </div>
-        </section>
+            <nav class="hidden lg:flex gap-6 text-lg font-medium">
+                 <a href="https://www.cheffyscrystals.shop" class="text-purple-300 hover:text-white transition-colors font-bold uppercase tracking-tighter">Shop Direct</a>
+                 <a href="#about" class="hover:text-purple-300 transition-colors">About</a>
+                 <a href="#blog" class="hover:text-purple-300 transition-colors">Blog</a>
+                 <a href="#events" class="hover:text-purple-300 transition-colors">Events</a>
+                 <a href="#featured" class="hover:text-purple-300 transition-colors">Crystals</a>
+                 <a href="#socials" class="hover:text-purple-300 transition-colors">Socials</a>
+                 <a href="#faq" class="hover:text-purple-300 transition-colors">FAQ</a>
+            </nav>
+            <a href="https://www.cheffyscrystals.shop" class="lg:hidden bg-purple-600 px-4 py-2 rounded-full text-sm font-bold shadow-lg">Save 10% Now</a>
+        </div>
+    </header>
 
-        {/* Why Choose Us */}
-        <section id="why-us">
-          <h2 className="text-4xl font-black text-center mb-12 gradient-text uppercase tracking-tighter">Why our clients choose us</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gray-900/40 p-8 rounded-[2rem] text-center border border-white/5 hover:border-purple-500/30 transition-all group">
-              <div className="bg-purple-600/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:rotate-6 transition-transform">
-                <Smile className="text-purple-300" size={32} />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-4 uppercase tracking-tight">Approachable & Good Energy</h3>
-              <p className="text-gray-400 leading-relaxed">We're easy to talk to! Whether you need a quick consult or advice on stones, we treat you like a friend.</p>
-            </div>
-            <div className="bg-gray-900/40 p-8 rounded-[2rem] text-center border border-white/5 hover:border-purple-500/30 transition-all group">
-              <div className="bg-purple-600/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:rotate-6 transition-transform">
-                <Tag className="text-purple-300" size={32} />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-4 uppercase tracking-tight">Truly Affordable</h3>
-              <p className="text-gray-400 leading-relaxed">No 10x markups here. We keep our prices honest so healing remains within reach for every Filipino.</p>
-            </div>
-            <div className="bg-gray-900/40 p-8 rounded-[2rem] text-center border border-white/5 hover:border-purple-500/30 transition-all group">
-              <div className="bg-purple-600/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:rotate-6 transition-transform">
-                <Leaf className="text-purple-300" size={32} />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-4 uppercase tracking-tight">No Complexity</h3>
-              <p className="text-gray-400 leading-relaxed">We make crystals easy to understand. No confusing jargon—just practical guidance for your journey.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Blog Section */}
-        <section id="blog" className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-purple-400 uppercase tracking-[0.3em] font-bold text-xs">Behind the Brand</span>
-            <h2 className="text-5xl font-black text-white mt-4">Crystal Musings</h2>
-          </div>
-          <article className="bg-white/5 backdrop-blur-xl p-8 md:p-16 rounded-[3rem] border border-white/10 shadow-2xl relative overflow-hidden">
-            <header className="mb-10 border-b border-white/10 pb-8">
-              <h3 className="text-3xl md:text-5xl font-black text-white leading-tight mb-12 uppercase tracking-tighter text-center md:text-left">
-                The Spark That Started It All: Why Every Filipino Deserves High-Vibe Healing
-              </h3>
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm text-purple-300">
-                <span className="font-bold">By Cheffy</span>
-                <span className="opacity-50">•</span>
-                <span>5 min read</span>
-              </div>
-            </header>
-            <div className="text-lg md:text-xl text-gray-300 space-y-10 leading-relaxed font-light">
-              <p className="article-dropcap">
-                The story of <strong>Cheffy’s Crystals</strong> didn't start in a high-end mall. It began in the silence of the 2020 pandemic. Like so many others, I was searching for <strong>authentic healing crystals in the Philippines</strong> to bring a sense of peace and protection into a world that felt chaotic.
-              </p>
-              <p>
-                I spent hours scouring the web, but I kept hitting the same wall: <strong>Pricing.</strong> I noticed stones being sold at a staggering <strong>10x higher than their actual cost.</strong> It broke my heart to realize spiritual wellness was being treated as a luxury for the few.
-              </p>
-              <div className="bg-purple-600/10 border-l-4 border-purple-500 p-8 rounded-r-2xl">
-                <p className="text-2xl md:text-3xl text-white font-bold italic leading-tight">
-                  "We aren't just a shop. We are here to be your crystal buddies, growing and healing together."
+    <main class="container mx-auto px-4 py-8 md:py-16">
+        <!-- Hero Section -->
+        <section class="text-center py-16 md:py-24 rounded-3xl bg-gradient-to-br from-gray-900/40 via-purple-900/40 to-gray-900/40 glass-card mb-16 relative border border-purple-500/20">
+            <div class="max-w-3xl mx-auto px-4 relative z-10">
+                <img src="images/logo.png" alt="Cheffy's Crystals Official Online Shop Logo" class="mx-auto h-32 w-32 md:h-40 md:w-40 rounded-full mb-8 shadow-2xl shadow-purple-500/30">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
+                    ✨ The Best Affordable <span class="gradient-text">Crystal Store in the Philippines</span> ✨
+                </h1>
+                <p class="text-lg md:text-xl text-purple-200 mb-10">
+                    Skip the high markups of big malls. Buy authentic crystals direct and save more on your healing journey.
                 </p>
-              </div>
-              <p>
-                That realization was my turning point. Today, my mission is to make <strong>affordable gemstones in Manila</strong> and the provinces a reality. We are here to be your **crystal buddies.** Whether you are a student or a collector, you deserve high-vibe energy.
-              </p>
-              <div className="text-center md:text-right pt-10 border-t border-white/10">
-                <p className="text-gray-400 mb-1">Stay shiny, crystal friend!</p>
-                <p className="signature-font text-5xl text-purple-300">Love, Cheffy~</p>
-              </div>
-            </div>
-          </article>
-        </section>
-
-        {/* Events Section */}
-        <section id="events" className="bg-gray-900/40 p-8 md:p-12 rounded-[3rem] border border-white/5">
-          <h2 className="text-4xl font-bold text-center mb-12 gradient-text uppercase tracking-tighter">Join Our Community</h2>
-          <div className="flex flex-col md:flex-row items-center gap-12">
-            <div className="md:w-1/2 grid grid-cols-2 gap-4">
-              <img src="tarotcon_spring2026.jpg" alt="TarotCon Spring Festival 2026 Makati" className="rounded-2xl shadow-2xl shadow-purple-900/30 w-full h-auto object-cover" />
-              <img src="tarotcon_speaker_spring2026.jpg" alt="Cheffy guest speaker at TarotCon 2026" className="rounded-2xl shadow-2xl shadow-purple-900/30 w-full h-auto object-cover" />
-            </div>
-            <div className="md:w-1/2 space-y-6">
-              <h3 className="text-3xl font-bold text-white uppercase tracking-tight">TarotCon Spring Festival 2026</h3>
-              <p className="text-purple-300 font-semibold uppercase tracking-wide">April 25, 2026 | Astbury, Poblacion Makati</p>
-              <p className="text-gray-300 leading-relaxed">
-                Join us at the <strong>TarotCon Spring Festival!</strong> I’ll be a guest speaker and merchant. Come say hi and let’s talk about how spiritual stones can unlock your intuition.
-              </p>
-              <a href="https://tarotcon.ph" target="_blank" rel="noreferrer" className="inline-block bg-purple-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-purple-700 transition-all shadow-lg hover:scale-105">Get Your Tickets</a>
-            </div>
-          </div>
-        </section>
-
-        {/* Featured Grid */}
-        <section id="featured">
-          <h2 className="text-4xl font-black text-center mb-16 uppercase tracking-tighter italic text-white">Explore the Collection</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {crystalData.map((item, idx) => (
-              <div key={idx} className="group bg-gray-900/40 rounded-[2rem] overflow-hidden border border-white/5 hover:border-purple-500/50 transition-all shadow-xl">
-                <div className="overflow-hidden h-72">
-                  <img src={item.imgSrc} alt={item.alt} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div class="flex flex-col items-center gap-6">
+                    <div class="flex flex-col items-center gap-3">
+                        <a href="https://www.cheffyscrystals.shop" class="w-full sm:w-auto cta-primary text-white font-black py-4 px-10 rounded-full text-xl hover:scale-105 transition-all duration-300 shadow-2xl">
+                            🛒 SHOP OUR OFFICIAL STORE
+                        </a>
+                        <p class="text-purple-300 font-bold tracking-wide uppercase text-sm discount-badge bg-purple-900/40 px-4 py-1 rounded-full border border-purple-400/30">
+                             🎁 10% OFF WHEN YOU BUY DIRECT
+                        </p>
+                    </div>
                 </div>
-                <div className="p-8 text-center">
-                  <h4 className="text-2xl font-bold text-white mb-2 uppercase tracking-tight">{item.title}</h4>
-                  <p className="text-purple-400 font-medium">{item.desc}</p>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="mb-16 p-8 md:p-12 rounded-3xl glass-card">
+             <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Authentic Crystals, Real Intentions</h2>
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <div class="md:w-1/2 text-lg leading-relaxed text-gray-300 space-y-4 text-center md:text-left">
+                    <p>Searching for an <strong>affordable gemstone shop in Manila</strong> that doesn't compromise on quality? At Cheffy’s Crystals, we believe energy work should be for everyone.</p>
+                    <p>We offer authentic healing crystals shipped nationwide—from <strong>Metro Manila to Cebu and Davao</strong>. Our collection starts as low as <strong class="font-bold text-purple-300">₱20</strong>, making spiritual wellness accessible to all Filipinos.</p>
+                    <div class="mt-8 pt-6 border-t border-purple-400/20">
+                        <h3 class="text-2xl font-bold text-white mb-3">Our Mission</h3>
+                        <p>To provide high-quality, authentic spiritual stones at honest prices, ensuring every Filipino can manifest abundance and positivity through the power of crystals.</p>
+                    </div>
                 </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center">
-            <a href="https://www.cheffyscrystals.shop" className="bg-white text-purple-900 font-black py-4 px-10 rounded-full text-xl hover:bg-purple-100 transition-all shadow-xl">
-              BROWSE SHOP & SAVE 10%
-            </a>
-          </div>
+                 <div class="md:w-1/2">
+                    <img src="images/owner-photo.jpg" alt="Cheffy, Founder of Cheffy's Crystals Philippines" class="rounded-2xl shadow-2xl shadow-purple-900/30 w-full h-auto object-cover">
+                </div>
+            </div>
         </section>
 
-        {/* Socials Grid */}
-        <section id="socials" className="bg-gray-900/40 p-12 rounded-[3rem] border border-white/5">
-          <h2 className="text-4xl font-black text-center mb-16 uppercase tracking-tighter italic text-white">Find Us Online</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-6">
-            <SocialCard href="https://www.cheffyscrystals.shop" icon={<ShoppingCart />} label="Official Store" highlight="Save 10%" important />
-            <SocialCard href="https://shopee.ph/cheffyyyy" icon={<ShoppingCart />} label="Shopee" />
-            <SocialCard href="https://www.tiktok.com/@cheffyscrystals" icon={<MessageSquare />} label="TikTok" />
-            <SocialCard href="https://facebook.com/cheffyscrystals" icon={<Facebook />} label="Facebook" />
-            <SocialCard href="mailto:storetgf@gmail.com" icon={<Mail />} label="Email Us" />
-          </div>
+        <!-- Why our clients choose us Section -->
+        <section id="why-us" class="mb-16">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text uppercase tracking-tighter">Why our clients choose us</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-3xl text-center border border-white/5 hover:border-purple-500/30 transition-all">
+                    <div class="bg-purple-600/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Approachable & Good Energy</h3>
+                    <p class="text-gray-400 leading-relaxed">We're easy to talk to! Whether you need a quick consult or advice on stones, we treat you like a friend.</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl text-center border border-white/5 hover:border-purple-500/30 transition-all">
+                    <div class="bg-purple-600/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Truly Affordable</h3>
+                    <p class="text-gray-400 leading-relaxed">No 10x markups here. We keep our prices honest so healing remains within reach for every Filipino.</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl text-center border border-white/5 hover:border-purple-500/30 transition-all">
+                    <div class="bg-purple-600/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">No Complexity</h3>
+                    <p class="text-gray-400 leading-relaxed">We make crystals easy to understand. No confusing jargon—just practical guidance for your journey.</p>
+                </div>
+            </div>
         </section>
 
-        {/* FAQ Section */}
-        <section id="faq" className="max-w-4xl mx-auto bg-white/5 rounded-[2.5rem] p-8 md:p-12 backdrop-blur-sm border border-white/5">
-          <h2 className="text-4xl font-black text-center mb-12 uppercase tracking-tighter italic text-white">Frequently Asked Questions</h2>
-          <div className="divide-y divide-white/10">
-            {faqData.map((item, idx) => (
-              <FAQAccordion key={idx} question={item.q} answer={item.a} />
-            ))}
-          </div>
+        <!-- Blog Section: Crystal Musings (Magazine Style) -->
+        <section id="blog" class="mb-16 p-8 md:p-12 rounded-3xl bg-gradient-to-br from-purple-900/10 via-black/40 to-purple-900/10 border border-purple-500/20">
+            <div class="text-center mb-12">
+                <span class="text-purple-400 uppercase tracking-widest font-bold text-sm">Feature Article</span>
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mt-2">Crystal Musings</h2>
+            </div>
+            <article class="max-w-4xl mx-auto bg-white/5 backdrop-blur-md p-8 md:p-16 rounded-[2rem] border border-white/10 shadow-2xl text-center md:text-left relative overflow-hidden">
+                <div class="absolute -left-4 top-20 hidden lg:block">
+                    <div class="bg-purple-600 text-white p-6 rounded-2xl max-w-[200px] shadow-xl transform -rotate-6">
+                        <p class="text-lg font-bold italic leading-tight">"Something so grounding shouldn't be kept away by greedy markups."</p>
+                    </div>
+                </div>
+
+                <header class="mb-10 border-b border-white/10 pb-8">
+                    <h3 class="text-3xl md:text-4xl font-black text-white leading-tight mb-4 uppercase tracking-tighter">The Spark That Started It All: Why Every Filipino Deserves High-Vibe Healing</h3>
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm text-purple-300">
+                        <span class="font-bold">By Cheffy</span>
+                        <span class="opacity-50">•</span>
+                        <span>5 min read</span>
+                    </div>
+                </header>
+
+                <div class="text-lg md:text-xl text-gray-300 space-y-8 leading-relaxed font-light">
+                    <p class="article-dropcap">The story of <strong>Cheffy’s Crystals</strong> didn't start in a high-end mall. It began in the silence of the 2020 pandemic. Like so many others, I was searching for <strong>authentic healing crystals in the Philippines</strong> to bring peace into a chaotic world.</p>
+                    <p>I noticed a disturbing pattern: stones were being sold at <strong>10x higher than their actual cost.</strong> It broke my heart to realize wellness was being treated as a luxury for the few.</p>
+                    
+                    <div class="bg-purple-600/10 border-l-4 border-purple-500 p-6 my-10 rounded-r-2xl">
+                        <p class="text-2xl text-white font-bold italic">"We aren't just a shop. We are here to be your crystal buddies, growing and healing together."</p>
+                    </div>
+
+                    <p>That realization was my turning point. Today, my mission is to make <strong>affordable gemstones in Manila</strong> and the provinces a reality. We are here for you.</p>
+                    
+                    <footer class="mt-12 pt-8 border-t border-white/10 text-center md:text-right">
+                        <div class="inline-block text-left">
+                            <p class="text-gray-400 mb-1">Stay shiny, crystal friend!</p>
+                            <p class="signature text-5xl text-purple-300">Love, Cheffy~</p>
+                        </div>
+                    </footer>
+                </div>
+            </article>
+        </section>
+        
+        <!-- Upcoming Events Section -->
+        <section id="events" class="mb-16 p-8 md:p-12 rounded-3xl glass-card">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Join Our Community</h2>
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <div class="md:w-1/2 grid grid-cols-2 gap-4">
+                    <img src="tarotcon_spring2026.jpg" alt="TarotCon Spring Festival 2026 Makati Crystal Merchant" class="rounded-2xl shadow-2xl shadow-purple-900/30 w-full h-auto object-cover">
+                    <img src="tarotcon_speaker_spring2026.jpg" alt="Cheffy guest speaker at TarotCon 2026" class="rounded-2xl shadow-2xl shadow-purple-900/30 w-full h-auto object-cover">
+                </div>
+                <div class="md:w-1/2 text-lg leading-relaxed text-gray-300 space-y-4 text-center md:text-left">
+                    <h3 class="text-3xl font-bold text-white uppercase tracking-tight">TarotCon Spring Festival 2026</h3>
+                    <p class="text-purple-300 font-semibold uppercase tracking-wide">April 25, 2026 | Astbury, Poblacion Makati</p>
+                    <p>Join us at the <strong>TarotCon Spring Festival!</strong> I’ll be a guest speaker and merchant. Come say hi and let’s talk crystals!</p>
+                    <a href="https://tarotcon.ph" target="_blank" class="inline-block mt-4 bg-purple-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-purple-700 transition-all shadow-lg">Get Your Tickets</a>
+                </div>
+            </div>
         </section>
 
-      </main>
+        <!-- Featured Crystals Section -->
+        <section id="featured" class="mb-16">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text uppercase tracking-tighter text-white">Featured Crystals</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <div class="glass-card rounded-2xl overflow-hidden group border border-white/5">
+                    <img src="images/crystal-display.jpg" alt="Authentic healing crystals collection Philippines" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-white mb-2 uppercase tracking-tight">Crystal Collections</h3>
+                        <p class="text-purple-300 font-medium">Find Your Perfect Energy</p>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl overflow-hidden group border border-white/5">
+                    <img src="images/assorted-crystals.jpeg" alt="Assorted tumbled gemstones Philippines" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-white mb-2 uppercase tracking-tight">Assorted Tumbles</h3>
+                        <p class="text-purple-300 font-medium">Carry Good Vibes With You</p>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl overflow-hidden group border border-white/5">
+                    <img src="images/moss-agate.jpg" alt="Authentic Moss Agate crystal for abundance" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-white mb-2 uppercase tracking-tight">Moss Agate</h3>
+                        <p class="text-purple-300 font-medium">Abundance & New Beginnings</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="https://www.cheffyscrystals.shop" class="inline-block bg-white text-purple-900 font-black py-4 px-12 rounded-full text-xl hover:bg-purple-100 transition-all shadow-xl">BROWSE SHOP & SAVE 10% DIRECT</a>
+            </div>
+        </section>
 
-      <footer className="text-center py-20 border-t border-white/5">
-        <p className="text-gray-400 font-medium italic mb-2 tracking-tight text-xl">Born from a passion to make healing accessible to every Filipino.</p>
-        <p className="text-gray-500 text-sm">© Cheffy's Crystals 2026. All Rights Reserved.</p>
-      </footer>
-    </div>
-  );
-}
+        <!-- Socials Grid -->
+        <section id="socials" class="mb-16 p-8 md:p-12 rounded-3xl glass-card text-center">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text uppercase tracking-tighter">Find Us Online</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+                <a href="https://www.cheffyscrystals.shop" class="glass-card p-4 rounded-2xl flex flex-col items-center justify-center gap-3 border-2 border-purple-400 bg-purple-900/20 hover:bg-purple-900/40 transition-all relative group">
+                    <div class="absolute -top-3 -right-3 bg-white text-purple-900 text-[10px] font-black px-2 py-1 rounded-md shadow-xl uppercase group-hover:scale-110 transition-transform">Save 10%</div>
+                    <svg class="w-10 h-10 text-purple-300" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.8L19.5 8 12 11.2 4.5 8 12 4.8zM4 15.8V9.7l7 3.1v6.1l-7-3.1zm9 3.1v-6.1l7-3.1v6.1l-7 3.1z"></path></svg>
+                    <span class="font-bold text-white">Official Store</span>
+                </a>
+                <a href="https://shopee.ph/cheffyyyy" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-purple-900/40 transition-all">
+                    <span class="font-semibold text-white">Shopee</span>
+                </a>
+                <a href="https://www.tiktok.com/@cheffyscrystals" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-purple-900/40 transition-all">
+                    <span class="font-semibold text-white">TikTok</span>
+                </a>
+                <a href="https://facebook.com/cheffyscrystals" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-purple-900/40 transition-all">
+                    <span class="font-semibold text-white">Facebook</span>
+                </a>
+                <a href="mailto:storetgf@gmail.com" class="glass-card p-4 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-purple-900/40 transition-all">
+                    <span class="font-semibold text-white">Email Us</span>
+                </a>
+            </div>
+        </section>
 
-const SocialCard = ({ href, icon, label, highlight, important }) => (
-  <a href={href} target="_blank" rel="noreferrer" className={`group flex flex-col items-center gap-4 bg-white/5 p-8 rounded-[2rem] border transition-all relative ${important ? 'border-purple-400 bg-purple-900/20' : 'border-white/10 hover:bg-purple-900/40 hover:border-purple-400'}`}>
-    {highlight && (
-      <div className="absolute -top-3 -right-3 bg-white text-purple-900 text-[10px] font-black px-2 py-1 rounded shadow-xl uppercase animate-bounce">
-        {highlight}
-      </div>
-    )}
-    <div className="text-purple-400 group-hover:scale-110 transition-transform">
-      {React.cloneElement(icon, { size: 32 })}
-    </div>
-    <span className="font-bold text-sm uppercase tracking-widest text-center">{label}</span>
-  </a>
-);
+        <!-- FAQs Section -->
+        <section id="faq" class="p-8 md:p-12 rounded-3xl glass-card">
+            <h2 class="text-4xl font-bold text-center mb-8 gradient-text uppercase tracking-tighter">Frequently Asked Questions</h2>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <details class="bg-gray-800/60 rounded-lg p-4 cursor-pointer">
+                    <summary class="font-semibold text-lg text-white">Are your crystals authentic?</summary>
+                    <p class="mt-3 text-gray-300">Yes! All our crystals are 100% authentic spiritual stones, carefully sourced for their quality and energy.</p>
+                </details>
+                <details class="bg-gray-800/60 rounded-lg p-4 cursor-pointer">
+                    <summary class="font-semibold text-lg text-white">Where is the best place to buy crystals in the Philippines?</summary>
+                    <p class="mt-3 text-gray-300">We recommend ordering through our <strong>official store at www.cheffyscrystals.shop</strong> to get an additional 10% discount and the best prices.</p>
+                </details>
+                <details class="bg-gray-800/60 rounded-lg p-4 cursor-pointer">
+                    <summary class="font-semibold text-lg text-white">What types of healing crystals do you sell?</summary>
+                    <p class="mt-3 text-gray-300">We sell a wide variety of healing crystals, including raw crystals, tumbled stones, and popular gemstones like amethyst, clear quartz, rose quartz, citrine, and moss agate.</p>
+                </details>                
+                <details class="bg-gray-800/60 rounded-lg p-4 cursor-pointer">
+                    <summary class="font-semibold text-lg text-white">Do you ship to Cebu, Davao, and outside Manila?</summary>
+                    <p class="mt-3 text-gray-300">Yes! We offer nationwide shipping across the Philippines and international shipping to Malaysia and Singapore via Shopee.</p>
+                </details>
+                <details class="bg-gray-800/60 rounded-lg p-4 cursor-pointer">
+                    <summary class="font-semibold text-lg text-white">Are there holes in the crystals for jewelry making?</summary>
+                    <p class="mt-3 text-gray-300">By default, our crystals do not have holes. If you need drilled crystals, please message us first before placing an order.</p>
+                </details>
+                <details class="bg-gray-800/60 rounded-lg p-4 cursor-pointer">
+                    <summary class="font-semibold text-lg text-white">Do you accept same-day delivery?</summary>
+                    <p class="mt-3 text-gray-300">We currently do not offer Lalamove or other same-day delivery services. All orders are processed through our e-commerce platforms for standard shipping.</p>
+                </details>
+                <details class="bg-gray-800/60 rounded-lg p-4 cursor-pointer">
+                    <summary class="font-semibold text-lg text-white">How do I know which crystal is right for me?</summary>
+                    <p class="mt-3 text-gray-300">Trust your intuition! We usually say to choose the crystal that "calls" to you first. You can also check our social media for guides on crystal meanings.</p>
+                </details>
+                <details class="bg-gray-800/60 rounded-lg p-4 cursor-pointer">
+                    <summary class="font-semibold text-lg text-white">What payment methods do you accept?</summary>
+                    <p class="mt-3 text-gray-300">We accept all standard payment options provided by our shop partners, including GCash, COD, and Credit/Debit cards.</p>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center p-8 mt-16 border-t border-gray-700">
+        <p class="text-gray-400 font-medium italic mb-2">Born from a passion to make healing accessible to every Filipino.</p>
+        <p class="text-gray-500 text-sm">&copy; Cheffy's Crystals 2026. All Rights Reserved.</p>
+    </footer>
+
+    <script async src="https://www.tiktok.com/embed.js"></script>
+</body>
+</html>
