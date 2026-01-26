@@ -1,0 +1,150 @@
+/* Google Fonts - Inter, Poppins, Dancing Script */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700;800;900&family=Dancing+Script:wght@700&display=swap');
+
+@import "tailwindcss";
+
+/* Custom Theme Variables */
+@theme {
+  --font-inter: 'Inter', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-dancing: 'Dancing Script', cursive;
+
+  --color-crystal-bg: #1a0f2b;
+  --color-purple-glow: rgba(124, 58, 237, 0.4);
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #1a0f2b;
+  background-image: url('/images/crystal-background.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Glass Card Effect */
+.glass-card {
+  background: rgba(31, 41, 55, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(to right, #a78bfa, #c4b5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* CTA Button */
+.cta-primary {
+  background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+}
+
+/* Subtle Pulse Animation */
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.discount-badge {
+  animation: subtle-pulse 2s infinite ease-in-out;
+}
+
+/* Article Dropcap */
+.article-dropcap::first-letter {
+  font-family: 'Poppins', sans-serif;
+  float: left;
+  font-size: 4.5rem;
+  line-height: 1;
+  padding-right: 0.75rem;
+  font-weight: 900;
+  color: #a78bfa;
+}
+
+/* Signature Font */
+.signature {
+  font-family: 'Dancing Script', cursive;
+}
+
+/* Magazine Quote */
+.magazine-quote {
+  max-width: 280px;
+  float: left;
+  margin: 0.5rem 1.5rem 1rem 0;
+  z-index: 10;
+}
+
+.clear-both {
+  clear: both;
+}
+
+/* FAQ Details Styling */
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details > summary::after {
+  content: '+';
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 300;
+  transition: transform 0.3s ease-in-out;
+}
+
+details[open] > summary::after {
+  transform: rotate(45deg);
+}
+
+/* Shimmer animation for loading states */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Float animation for decorative elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Glow animation */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.6);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
