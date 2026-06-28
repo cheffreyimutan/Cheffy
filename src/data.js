@@ -71,6 +71,11 @@ export const faq = [
   { q:"I'm brand new to crystals. Where do I start?", a:"Start simple with an Amethyst for calm and a Clear Quartz to amplify your intentions — our two most-loved beginner stones. From there, just follow your intuition. Our blog has a full beginner's guide too." },
   { q:"Do you really start at ₱20?", a:"We do. Small tumbled chips start at ₱20 so anyone can begin a collection. Buy direct from our official store and get 10% off too." },
   { q:"How do I care for my crystals?", a:"Cleanse them now and then — moonlight, selenite, or sound all work. We include simple care tips with every order." },
+  { q:"Where are you based? Do you ship nationwide?", a:"We're based in Imus, Cavite and yes — we ship anywhere in the Philippines via Shopee, TikTok Shop, and our direct store at shop.cheffyscrystals.com. We also offer same-day delivery via Lalamove for nearby areas. Message us on Instagram for details." },
+  { q:"Do you accept returns or exchanges?", a:"We understand that change of mind happens! Message us and we'll sort it out. We accept change-of-mind returns and replacements within 7 days of receiving your order. Return shipping fee is shouldered by the buyer." },
+  { q:"Which crystal is good for anxiety, stress, or sleep?", a:"Amethyst is our top pick for all three — it calms an overworked mind and promotes restful sleep. Blue Calcite also works beautifully for stress. For sleep specifically, keep one or both on your nightstand. Not sure where to start? Message us and Cheffy will help you pick." },
+  { q:"What is the difference between tumbled stones and raw crystals?", a:"Tumbled stones are smooth and polished — great for carrying in your pocket or placing on your body. Raw and rough pieces are unprocessed and closer to how the crystal forms in nature, which many people feel gives them stronger energy. Both work; it really comes down to personal preference and how you plan to use them." },
+  { q:"How do I order? Where can I buy Cheffy's Crystals?", a:"You can shop directly at shop.cheffyscrystals.com for the best prices (10% cheaper than any marketplace). We're also on Shopee (shopee.ph/cheffyyyy) and TikTok Shop (@cheffyscrystals). We also appear at bazaars and events around Metro Manila — follow us on Instagram or TikTok to catch the next one." },
 ];
 
 export const blogs = [
