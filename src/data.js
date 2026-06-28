@@ -66,19 +66,41 @@ export const reviews = [
 ];
 
 export const faq = [
-  { q:"Are your crystals authentic?", a:"Yes. Every piece is hand-checked by Cheffy herself before it ships. We're upfront about what's natural, dyed, or reconstituted — honesty is the whole point of this shop." },
-  { q:"How much is shipping?", a:"We ship nationwide via J&T and Shopee logistics. Standard rates apply, and orders often qualify for the platform's free-shipping vouchers." },
-  { q:"I'm brand new to crystals. Where do I start?", a:"Start simple with an Amethyst for calm and a Clear Quartz to amplify your intentions — our two most-loved beginner stones. From there, just follow your intuition. Our blog has a full beginner's guide too." },
-  { q:"Do you really start at ₱20?", a:"We do. Small tumbled chips start at ₱20 so anyone can begin a collection. Buy direct from our official store and get 10% off too." },
-  { q:"How do I care for my crystals?", a:"Cleanse them now and then — moonlight, selenite, or sound all work. We include simple care tips with every order." },
-  { q:"Where are you based? Do you ship nationwide?", a:"We're based in Imus, Cavite and yes — we ship anywhere in the Philippines via Shopee, TikTok Shop, and our direct store at shop.cheffyscrystals.com. We also offer same-day delivery via Lalamove for nearby areas. Message us on Instagram for details." },
-  { q:"Do you accept returns or exchanges?", a:"We understand that change of mind happens! Message us and we'll sort it out. We accept change-of-mind returns and replacements within 7 days of receiving your order. Return shipping fee is shouldered by the buyer." },
-  { q:"Which crystal is good for anxiety, stress, or sleep?", a:"Amethyst is our top pick for all three — it calms an overworked mind and promotes restful sleep. Blue Calcite also works beautifully for stress. For sleep specifically, keep one or both on your nightstand. Not sure where to start? Message us and Cheffy will help you pick." },
-  { q:"What is the difference between tumbled stones and raw crystals?", a:"Tumbled stones are smooth and polished — great for carrying in your pocket or placing on your body. Raw and rough pieces are unprocessed and closer to how the crystal forms in nature, which many people feel gives them stronger energy. Both work; it really comes down to personal preference and how you plan to use them." },
-  { q:"How do I order? Where can I buy Cheffy's Crystals?", a:"You can shop directly at shop.cheffyscrystals.com for the best prices (10% cheaper than any marketplace). We're also on Shopee (shopee.ph/cheffyyyy) and TikTok Shop (@cheffyscrystals). We also appear at bazaars and events around Metro Manila — follow us on Instagram or TikTok to catch the next one." },
+  { q:"Are your crystals authentic?", a:"Absolutely! Every piece is carefully checked by our team before it's packed and sent your way. We're always upfront about what's natural, dyed, or reconstituted — no surprises, no hidden markups. Honesty is at the heart of everything we do here." },
+  { q:"How much is shipping?", a:"Shipping follows standard Shopee and TikTok Shop rates. Orders ₱1,500 and above get free shipping! For same-day delivery via Lalamove, rates depend on your location — DM us on Instagram for details." },
+  { q:"I'm brand new to crystals. Where do I start?", a:"Our honest advice? Follow your heart! Go for the crystal that catches your eye — that little pull you feel is your intuition telling you exactly what you need right now. We wrote a whole blog post about this. Check it out at cheffyscrystals.com/blog/what-crystal-is-right-for-you!" },
+  { q:"Do you really start at ₱20?", a:"Yes, really! Small tumbled chips start at ₱20 so good energy is accessible to everyone. Shop directly at shop.cheffyscrystals.com and you'll also save an extra 10% — always the best price you'll find." },
+  { q:"How do I care for my crystals?", a:"A little care goes a long way! For a full guide on cleansing and looking after your stones — including which ones should never touch water — head over to our blog: cheffyscrystals.com/blog/crystal-care-101-no-babad" },
+  { q:"Where are you based? Do you ship nationwide?", a:"We're based in Imus, Cavite and yes — we ship all over the Philippines via Shopee, TikTok Shop, and our direct store at shop.cheffyscrystals.com. Same-day delivery via Lalamove is also available for nearby areas. DM us on Instagram for details!" },
+  { q:"Do you accept returns or exchanges?", a:"We totally understand that change of mind happens! If you have any concerns with your order, please message us first so our team can help sort things out — we want to make sure you're happy. We accept change-of-mind returns and replacements within 7 days of receiving your items. Return shipping fee is to be shouldered by the buyer." },
+  { q:"Which crystal is good for anxiety, stress, or sleep?", a:"Amethyst is our go-to for all three — it's so calming and perfect for quieting an overactive mind at bedtime. Blue Calcite is another beautiful pick for stress. Pop one on your nightstand and see how it feels! Still not sure? Message us and our team will help you find the right match." },
+  { q:"What is the difference between tumbled stones and raw crystals?", a:"Tumbled stones are smooth and polished — lovely to carry in your pocket or hold during a stressful moment. Raw and rough pieces are closer to how the crystal looks straight from the earth, which many people feel gives them a more intense, unfiltered energy. Both are wonderful; it really just comes down to personal taste and how you plan to use them!" },
+  { q:"How do I order? Where can I buy Cheffy's Crystals?", a:"You can shop online at shop.cheffyscrystals.com for the best prices (always 10% cheaper than any marketplace!). We're also on Shopee (shopee.ph/cheffyyyy) and TikTok Shop (@cheffyscrystals). We also pop up at bazaars and events around Metro Manila — follow us on Instagram or TikTok so you never miss one!" },
 ];
 
 export const blogs = [
+  {
+    slug: "what-crystal-is-right-for-you",
+    title: "What Crystal Is Right for You? Follow Your Heart.",
+    cat: "Crystal 101",
+    excerpt: "With so many crystals to choose from, how do you know which one is yours? Our answer is simple: follow your heart. The one that catches your eye is usually exactly what you need right now.",
+    img: "/assets/display-table.jpg",
+    read: "3 min read",
+    date: "Jun 2026",
+    body: [
+      { p: "Walking into a crystal shop — or scrolling through one online — can feel completely overwhelming. Hundreds of shapes, colors, and names, each with its own list of properties and meanings. So how do you pick? How do you know which crystal is actually yours?" },
+      { h: "Our mantra: follow your heart." },
+      { p: "At Cheffy's Crystals, we genuinely believe that the crystal that catches your attention is the one you need. That little spark of 'oh, I love that one' is not random — it is your intuition doing its job. You are drawn to a stone because something in you already knows what it offers. Trust that feeling. It is almost always right." },
+      { p: "You do not need a crystal encyclopedia to start. You do not need to memorize chakras or match stones to star signs. You just need to pay attention to what pulls you in. Maybe it is the deep purple of an amethyst. Maybe it is the warm golden shimmer of a citrine. Maybe it is the quiet, steady darkness of a black tourmaline. Whatever it is — that is your starting point." },
+      { h: "A little guidance, just in case." },
+      { p: "If you want a gentle nudge, here is a simple way to think about it: notice what you have been feeling lately. Stressed and overwhelmed? You might be drawn to something soft and calming — amethyst, blue calcite, or rose quartz. Feeling scattered or foggy? Clear quartz or fluorite might be catching your eye. Anxious or in need of protection? Black tourmaline tends to call to people who need grounding and a sense of safety. Looking to attract something new — abundance, love, a fresh start? Citrine, carnelian, and green aventurine have a way of showing up for people in that season." },
+      { p: "But here is the thing: these are just starting points. If none of that resonates and you simply keep coming back to one particular stone — trust it. The logic can come later. The connection comes first." },
+      { h: "What if I pick the wrong one?" },
+      { p: "There is no wrong crystal. Every stone you are drawn to has something to offer you at this point in your life. Some people find that the crystal they least expected to like becomes their most important one. Others discover that a stone they bought for one reason ends up helping them in a completely different way. Crystals are not rigid rules. They are tools for reflection, intention, and energy — and your relationship with them is personal." },
+      { p: "So the next time you are browsing and one stone keeps pulling your eyes back to it — that is your answer. Add it to your cart. Bring it home. See what it has to say." },
+      { p: "And if you ever want a second opinion, we are always happy to help. Message us on Instagram or TikTok and tell us what you have been feeling lately — we love helping people find their stone." },
+    ]
+  },
   {
     slug: "how-to-use-your-crystals",
     title: "How to Use Your New Crystals (And Look Good Doing It!)",
