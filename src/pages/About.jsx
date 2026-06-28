@@ -87,9 +87,9 @@ function StoryBody() {
     { n:'01', t:'It began with one stressful week.', c1:'#9C6BD6', c2:'#5B2A9D',
       text:'Like a lot of our customers, Cheffy found crystals during a season of burnout — overworked, overstimulated, and looking for something grounding. One amethyst on the nightstand turned into a small, quiet ritual. That calm was worth sharing.' },
     { n:'02', t:'It started online.', c1:'#FF8FC4', c2:'#C81E74',
-      text:'Cheffy's Crystals began as an online store — a small shop run from home, bowl by bowl, with handwritten ₱ price tags. The rule from day one: keep it honest and keep it affordable, so anyone could start a collection.' },
+      text:"Cheffy's Crystals began as an online store — a small shop run from home, bowl by bowl, with handwritten ₱ price tags. The rule from day one: keep it honest and keep it affordable, so anyone could start a collection." },
     { n:'03', t:'From our home to yours.', c1:'#7FD3CE', c2:'#3C9D9A',
-      text:'We're an online store at heart, and we also bring our crystals to bazaars and events around the metro so you can meet them in person. Either way it's still Cheffy hand-checking and packing each order — shipped nationwide, from our home to yours.' },
+      text:"We're an online store at heart, and we also bring our crystals to bazaars and events around the metro so you can meet them in person. Either way it's still Cheffy hand-checking and packing each order — shipped nationwide, from our home to yours." },
   ];
   return (
     <section className="bg-aura section">
@@ -117,10 +117,10 @@ function StoryBody() {
 
 function Values() {
   const vals = [
-    { icon: <Ic.shield/>, t: 'Authentic & honest',  d: 'We're upfront about what's natural, dyed or reconstituted. No mystical markups, no half-truths.' },
-    { icon: <Ic.sparkles/>, t: 'Affordable for all', d: 'Chips from ₱20 and a 10% direct-shop discount. Good energy shouldn't be a luxury.' },
+    { icon: <Ic.shield/>, t: 'Authentic & honest',  d: "We're upfront about what's natural, dyed or reconstituted. No mystical markups, no half-truths." },
+    { icon: <Ic.sparkles/>, t: 'Affordable for all', d: "Chips from ₱20 and a 10% direct-shop discount. Good energy shouldn't be a luxury." },
     { icon: <Ic.heart/>, t: 'Sourced with love',    d: 'Every piece is chosen, cleansed and hand-checked by Cheffy before it ever ships to you.' },
-    { icon: <Ic.leaf/>, t: 'Personal service',       d: 'Message us anytime — we'll help you pick the right stone for whatever you're carrying.' },
+    { icon: <Ic.leaf/>, t: 'Personal service',       d: "Message us anytime — we'll help you pick the right stone for whatever you're carrying." },
   ];
   return (
     <section className="bg-cosmic section" style={{ position: 'relative', overflow: 'hidden' }}>
