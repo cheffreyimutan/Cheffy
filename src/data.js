@@ -94,14 +94,14 @@ export const blogs = [
   },
   {
     slug: "crystal-care-101-no-babad",
-    title: "Crystal Care 101: Please Don't "Babad" Your Gems!",
+    title: "Crystal Care 101: Please Don't 'Babad' Your Gems!",
     cat: "Crystal Care",
     excerpt: "It's a common misconception that all crystals love a good bath. The golden rule of crystal care is simple: do not soak them in water!",
     img: "/assets/selenite.jpg",
     read: "3 min read",
     date: "Jun 2026",
     body: [
-      { p: "Listen up, crystal lovers! We need to have a serious talk about how you treat your stones. It is a common misconception that all crystals love a good bath. The golden rule of crystal care is simple: do not "babad" (soak) them in water!" },
+      { p: "Listen up, crystal lovers! We need to have a serious talk about how you treat your stones. It is a common misconception that all crystals love a good bath. The golden rule of crystal care is simple: do not 'babad' (soak) them in water!" },
       { h: "Why water is the enemy" },
       { p: "In our humid Philippine climate, moisture is already everywhere. Many popular crystals, like selenite or angelite rough, are incredibly soft and water-soluble. If you leave them submerged in a bowl of water, they can literally dissolve, rust, or crack. You do not want your beautiful new investment turning into a cloudy puddle. If you are 100% sure your stone is water-safe (like clear quartz), a very quick rinse under running tap water is all it takes to physically clean off any dust." },
       { h: "So how do you cleanse their energy?" },
@@ -121,9 +121,9 @@ export const blogs = [
     body: [
       { p: "We know the feeling. That delivery notification pops up, the rider arrives, and you finally have your Cheffy's Crystals package in your hands. Ripping open the bubble wrap is the best part, but before you immediately toss that new stone into your pocket or onto your desk, there is a crucial two-step process you need to follow. Welcome to Unboxing Magic." },
       { h: "Step One: Cleanse the slate" },
-      { p: "Think about the journey your crystal has been on. It was mined from the earth, packaged, shipped, handed over to couriers, and finally delivered to your door. It has passed through a lot of different hands and environments, picking up residual energy along the way. You need to hit the reset button immediately. Before you use it, cleanse it to wipe the slate completely clean. Since we know better than to soak our delicate stones (remember, no "babad"!), you can use a quick smoke cleanse with incense, pass it over the flame of a candle, or set it on top of a selenite charging plate for a few hours." },
+      { p: "Think about the journey your crystal has been on. It was mined from the earth, packaged, shipped, handed over to couriers, and finally delivered to your door. It has passed through a lot of different hands and environments, picking up residual energy along the way. You need to hit the reset button immediately. Before you use it, cleanse it to wipe the slate completely clean. Since we know better than to soak our delicate stones (remember, no 'babad'!), you can use a quick smoke cleanse with incense, pass it over the flame of a candle, or set it on top of a selenite charging plate for a few hours." },
       { h: "Step Two: Program with intention" },
-      { p: "Now that your crystal is energetically clean, it is essentially a blank canvas waiting for instructions. Crystals need a job to do! Find a quiet spot, hold the newly cleansed stone comfortably in your hands, and take a deep breath. State your intention clearly — you can say it out loud or hold the thought firmly in your mind. Whether your goal is "protect my energy during office meetings," "bring me focus for my university thesis," or "attract abundance into my business," programming your crystal connects its natural frequencies directly to your personal aspirations. Once programmed, it is officially yours!" }
+      { p: "Now that your crystal is energetically clean, it is essentially a blank canvas waiting for instructions. Crystals need a job to do! Find a quiet spot, hold the newly cleansed stone comfortably in your hands, and take a deep breath. State your intention clearly — you can say it out loud or hold the thought firmly in your mind. Whether your goal is 'protect my energy during office meetings,' 'bring me focus for my university thesis,' or 'attract abundance into my business,' programming your crystal connects its natural frequencies directly to your personal aspirations. Once programmed, it is officially yours!" }
     ]
   },
   {
