@@ -168,6 +168,15 @@ function QuoteBand() {
   );
 }
 
+function linkify(text) {
+  const parts = text.split(/(https?:\/\/[^\s]+)/g);
+  return parts.map((part, i) =>
+    part.match(/^https?:\/\//)
+      ? <a key={i} href={part} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--price)', textDecoration: 'underline', wordBreak: 'break-all' }}>{part}</a>
+      : part
+  );
+}
+
 function FAQ() {
   const [open, setOpen] = useState(0);
   return (
@@ -187,7 +196,7 @@ function FAQ() {
                   <span style={{ color: 'var(--price)', transition: 'transform .25s', transform: isOpen ? 'rotate(180deg)' : 'none', flexShrink: 0 }}><Ic.chevron/></span>
                 </button>
                 <div style={{ maxHeight: isOpen ? 260 : 0, transition: 'max-height .3s ease', overflow: 'hidden' }} itemScope itemType="https://schema.org/Answer">
-                  <p style={{ margin: 0, padding: '0 24px 22px', color: 'var(--ink-soft)', fontSize: 15, lineHeight: 1.65 }} itemProp="text">{f.a}</p>
+                  <p style={{ margin: 0, padding: '0 24px 22px', color: 'var(--ink-soft)', fontSize: 15, lineHeight: 1.65 }} itemProp="text">{linkify(f.a)}</p>
                 </div>
               </div>
             );
