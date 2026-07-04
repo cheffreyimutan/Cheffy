@@ -32,6 +32,7 @@ export function Nav() {
             <Link className={'nav__link' + is('/blog')} to="/blog">Blog</Link>
             <Link className={'nav__link' + is('/about')} to="/about">Our Story</Link>
             <a className="nav__link" href="/#reviews">Reviews</a>
+            <Link className={'nav__link' + is('/services')} to="/services">Services</Link>
             <Link className={'nav__link' + is('/community')} to="/community">Community</Link>
           </nav>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -66,6 +67,7 @@ export function Footer() {
               <Link className="foot-link" to="/blog">Blog</Link>
               <Link className="foot-link" to="/about">Our Story</Link>
               <a className="foot-link" href="/#reviews">Reviews</a>
+              <Link className="foot-link" to="/services">Services</Link>
               <Link className="foot-link" to="/community">Community</Link>
               <a className="foot-link" href="/about#faq">FAQ</a>
             </div>

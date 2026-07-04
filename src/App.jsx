@@ -4,6 +4,7 @@ import About from './pages/About';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Community from './pages/Community';
+import Services from './pages/Services';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Route path="/blog"       element={<Blog/>}/>
       <Route path="/blog/:slug" element={<BlogPost/>}/>
       <Route path="/community"  element={<Community/>}/>
+      <Route path="/services"   element={<Services/>}/>
     </Routes>
   );
 }
