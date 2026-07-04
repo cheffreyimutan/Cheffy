@@ -11,10 +11,15 @@ const SITE_URL = 'https://cheffyscrystals.com';
 
 function SEOMeta() {
   useEffect(() => {
+    const pageUrl = `${SITE_URL}/about`;
     document.title = "Our Story — Cheffy's Crystals | Authentic Healing Crystals Philippines Since 2020";
-    document.querySelector('meta[name="description"]')?.setAttribute('content',
-      "Learn the story behind Cheffy's Crystals — an honest, affordable healing crystal shop in the Philippines started in 2020. Hand-checked stones, fair prices, nationwide shipping."
-    );
+    const set = (sel, attr, val) => document.querySelector(sel)?.setAttribute(attr, val);
+    set('meta[name="description"]',        'content', "Learn the story behind Cheffy's Crystals — an honest, affordable healing crystal shop in the Philippines started in 2020. Hand-checked stones, fair prices, nationwide shipping.");
+    set('link[rel="canonical"]',           'href',    pageUrl);
+    set('meta[property="og:url"]',         'content', pageUrl);
+    set('meta[property="og:title"]',       'content', "Our Story — Cheffy's Crystals | Authentic Healing Crystals Philippines");
+    set('meta[property="og:description"]', 'content', "The story behind Cheffy's Crystals — an honest, affordable healing crystal shop founded in Imus, Cavite in 2020. Hand-checked stones, fair prices, nationwide shipping.");
+    set('meta[property="og:image"]',       'content', `${SITE_URL}/assets/cheffy-booth-neon.jpg`);
 
     const schema = {
       "@context": "https://schema.org",

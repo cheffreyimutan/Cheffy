@@ -17,8 +17,23 @@ const BLOG_CAT_COLOR = {
 
 function SEOMeta({ b }) {
   useEffect(() => {
+    const postUrl = `${SITE_URL}/blog/${b.slug}`;
+    const postImg = `${SITE_URL}${b.img}`;
+
     document.title = `${b.title} — Cheffy's Crystals`;
-    document.querySelector('meta[name="description"]')?.setAttribute('content', b.excerpt);
+
+    const setMeta = (sel, attr, val) => document.querySelector(sel)?.setAttribute(attr, val);
+    setMeta('meta[name="description"]',        'content', b.excerpt);
+    setMeta('link[rel="canonical"]',           'href',    postUrl);
+    setMeta('meta[property="og:type"]',        'content', 'article');
+    setMeta('meta[property="og:url"]',         'content', postUrl);
+    setMeta('meta[property="og:title"]',       'content', `${b.title} — Cheffy's Crystals`);
+    setMeta('meta[property="og:description"]', 'content', b.excerpt);
+    setMeta('meta[property="og:image"]',       'content', postImg);
+    setMeta('meta[property="og:image:alt"]',   'content', b.title);
+    setMeta('meta[name="twitter:title"]',      'content', `${b.title} — Cheffy's Crystals`);
+    setMeta('meta[name="twitter:description"]','content', b.excerpt);
+    setMeta('meta[name="twitter:image"]',      'content', postImg);
 
     const schema = {
       "@context": "https://schema.org",
@@ -27,26 +42,35 @@ function SEOMeta({ b }) {
           "@type": "BlogPosting",
           "headline": b.title,
           "description": b.excerpt,
-          "image": `${SITE_URL}${b.img}`,
-          "url": `${SITE_URL}/blog/${b.slug}`,
-          "datePublished": b.date,
-          "author": { "@type": "Person", "name": "Cheffy", "url": `${SITE_URL}/about` },
+          "image": postImg,
+          "url": postUrl,
+          "datePublished": b.isoDate || b.date,
+          "dateModified":  b.isoDate || b.date,
+          "author": {
+            "@type": "Person",
+            "name": "Cheffy",
+            "url": `${SITE_URL}/about`,
+            "jobTitle": "Founder & Crystal Consultant",
+            "worksFor": { "@id": `${SITE_URL}/#organization` }
+          },
           "publisher": {
             "@type": "Organization",
+            "@id": `${SITE_URL}/#organization`,
             "name": "Cheffy's Crystals",
             "url": SITE_URL,
             "logo": `${SITE_URL}/assets/logo.png`
           },
           "articleSection": b.cat,
           "timeRequired": b.read,
-          "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_URL}/blog/${b.slug}` }
+          "inLanguage": "en-PH",
+          "mainEntityOfPage": { "@type": "WebPage", "@id": postUrl }
         },
         {
           "@type": "BreadcrumbList",
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home",  "item": SITE_URL },
             { "@type": "ListItem", "position": 2, "name": "Blog",  "item": `${SITE_URL}/blog` },
-            { "@type": "ListItem", "position": 3, "name": b.title, "item": `${SITE_URL}/blog/${b.slug}` },
+            { "@type": "ListItem", "position": 3, "name": b.title, "item": postUrl },
           ]
         }
       ]
@@ -55,7 +79,15 @@ function SEOMeta({ b }) {
     let el = document.getElementById('schema-post');
     if (!el) { el = document.createElement('script'); el.id = 'schema-post'; el.type = 'application/ld+json'; document.head.appendChild(el); }
     el.textContent = JSON.stringify(schema);
-    return () => el?.remove();
+    return () => {
+      el?.remove();
+      // restore homepage defaults
+      setMeta('link[rel="canonical"]',           'href',    SITE_URL + '/');
+      setMeta('meta[property="og:type"]',        'content', 'website');
+      setMeta('meta[property="og:url"]',         'content', SITE_URL + '/');
+      setMeta('meta[property="og:title"]',       'content', "Cheffy's Crystals — Authentic Healing Crystals Philippines");
+      setMeta('meta[property="og:image"]',       'content', `${SITE_URL}/assets/display-table.jpg`);
+    };
   }, [b]);
   return null;
 }

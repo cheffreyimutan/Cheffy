@@ -87,6 +87,7 @@ export const blogs = [
     img: "/assets/display-table.jpg",
     read: "3 min read",
     date: "Jun 2026",
+    isoDate: "2026-06-15",
     body: [
       { p: "Walking into a crystal shop — or scrolling through one online — can feel completely overwhelming. Hundreds of shapes, colors, and names, each with its own list of properties and meanings. So how do you pick? How do you know which crystal is actually yours?" },
       { h: "Our mantra: follow your heart." },
@@ -109,6 +110,7 @@ export const blogs = [
     img: "/assets/display-table.jpg",
     read: "3 min read",
     date: "Jun 2026",
+    isoDate: "2026-06-08",
     body: [
       { p: "So, your latest haul from Cheffy's Crystals just arrived, and you are officially obsessed. But now that you have these gorgeous stones, what exactly are you supposed to do with them? Do they just sit there? Absolutely not! Integrating crystals into your daily life is incredibly easy, fun, and can seriously elevate your personal space. Here are three foolproof ways to use your new gems." },
       { h: "1. Display them with pride" },
@@ -127,6 +129,7 @@ export const blogs = [
     img: "/assets/selenite.jpg",
     read: "3 min read",
     date: "Jun 2026",
+    isoDate: "2026-06-01",
     body: [
       { p: "Listen up, crystal lovers! We need to have a serious talk about how you treat your stones. It is a common misconception that all crystals love a good bath. The golden rule of crystal care is simple: do not 'babad' (soak) them in water!" },
       { h: "Why water is the enemy" },
@@ -145,6 +148,7 @@ export const blogs = [
     img: "/assets/bowls-labels.jpg",
     read: "2 min read",
     date: "May 2026",
+    isoDate: "2026-05-20",
     body: [
       { p: "We know the feeling. That delivery notification pops up, the rider arrives, and you finally have your Cheffy's Crystals package in your hands. Ripping open the bubble wrap is the best part, but before you immediately toss that new stone into your pocket or onto your desk, there is a crucial two-step process you need to follow. Welcome to Unboxing Magic." },
       { h: "Step One: Cleanse the slate" },
@@ -161,6 +165,7 @@ export const blogs = [
     img: "/assets/amethyst.jpg",
     read: "4 min read",
     date: "May 2026",
+    isoDate: "2026-05-05",
     body: [
       { p: "Starting your crystal journey can feel totally overwhelming. With so many colors, shapes, and mystical properties to choose from, where do you even begin? Don't worry — building your ultimate starter pack is easy. At Cheffy's Crystals, we always recommend building a foundation with versatile, easy-to-use stones. Here are the top 5 foolproof crystals every beginner needs in their collection." },
       { list: [
@@ -181,6 +186,7 @@ export const blogs = [
     img: "/assets/tigers-eye.jpg",
     read: "4 min read",
     date: "Apr 2026",
+    isoDate: "2026-04-20",
     body: [
       { p: "Between endless office meetings, looming project deadlines, and the pressure of balancing university studies with daily life, burnout is incredibly real. Whether you are climbing the corporate ladder, managing a business, or writing a massive academic manuscript, you need energetic support. Keep these five powerhouse crystals on your desk to survive the daily grind and hustle harder." },
       { list: [
@@ -201,6 +207,7 @@ export const blogs = [
     img: "/assets/malachite.jpg",
     read: "4 min read",
     date: "Apr 2026",
+    isoDate: "2026-04-01",
     body: [
       { p: "Curious about what everyone else is adding to their carts? At Cheffy's Crystals, we see trends come and go, but some stones consistently fly off our digital shelves. Whether our customers are drawn to their intense aesthetic beauty or their powerful energetic properties, these are the heavy hitters dominating our best-seller list right now." },
       { list: [

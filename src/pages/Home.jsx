@@ -77,18 +77,25 @@ function SEOMeta() {
         },
         {
           "@type": "LocalBusiness",
+          "@id": `${SITE_URL}/#localbusiness`,
           "name": "Cheffy's Crystals",
-          "description": "Online crystal shop serving all of the Philippines. Also appears at bazaars and markets in Metro Manila.",
+          "description": "Online crystal shop serving all of the Philippines. Also appears at bazaars and markets in Metro Manila and Cavite.",
           "url": SITE_URL,
-          "image": `${SITE_URL}/assets/cheffy-booth.jpg`,
-          "priceRange": "₱20–₱95",
-          "servesCuisine": null,
-          "areaServed": "Philippines",
+          "image": `${SITE_URL}/assets/cheffy-booth-neon.jpg`,
+          "priceRange": "₱20–₱500",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Imus",
+            "addressRegion": "Cavite",
+            "addressCountry": "PH"
+          },
+          "areaServed": ["Metro Manila", "Cavite", "Cebu", "Davao", "Philippines"],
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.9",
             "reviewCount": "2400",
-            "bestRating": "5"
+            "bestRating": "5",
+            "worstRating": "1"
           }
         }
       ]

@@ -8,18 +8,61 @@ const SITE_URL = 'https://cheffyscrystals.com';
 
 function SEOMeta() {
   useEffect(() => {
-    document.title = "Services — Cheffy's Crystals | Divination, Crystal Healing & Corporate Wellness";
-    document.querySelector('meta[name="description"]')?.setAttribute('content',
-      "Book a 1:1 crystal consultation, rune & oracle reading, or corporate wellness keynote with Cheffy's Crystals. Serving individuals and organizations across the Philippines."
-    );
+    const pageUrl = `${SITE_URL}/services`;
+    document.title = "Services — Cheffy's Crystals | Crystal Consultations, Rune Readings & Corporate Wellness Philippines";
+    const set = (sel, attr, val) => document.querySelector(sel)?.setAttribute(attr, val);
+    set('meta[name="description"]',        'content', "Book a 1:1 crystal consultation, rune & oracle reading, or corporate wellness keynote with Cheffy's Crystals. Featured speaker at Tarot Con 2025. Serving individuals and organizations across the Philippines.");
+    set('link[rel="canonical"]',           'href',    pageUrl);
+    set('meta[property="og:url"]',         'content', pageUrl);
+    set('meta[property="og:title"]',       'content', "Services — Cheffy's Crystals | Crystal Consultations & Corporate Wellness");
+    set('meta[property="og:description"]', 'content', "1:1 crystal consultations, rune readings, chakra healing, and corporate wellness workshops by Cheffy — featured speaker at Tarot Con 2025.");
+    set('meta[property="og:image"]',       'content', `${SITE_URL}/assets/tarot-con-2025.png`);
     const schema = {
       "@context": "https://schema.org",
-      "@type": "Service",
-      "provider": { "@type": "Organization", "name": "Cheffy's Crystals", "url": SITE_URL },
-      "name": "Crystal Healing & Wellness Services",
-      "description": "1:1 divination and energy consultations, crystal programming, chakra healing, and corporate wellness speaking engagements by Cheffy's Crystals.",
-      "areaServed": "Philippines",
-      "serviceType": ["Crystal Consultation", "Rune Reading", "Oracle Reading", "Corporate Wellness", "Speaking Engagement"],
+      "@graph": [
+        {
+          "@type": "Service",
+          "provider": { "@id": `${SITE_URL}/#organization` },
+          "name": "Crystal Healing & Wellness Services by Cheffy's Crystals",
+          "description": "1:1 divination and energy consultations, crystal programming, chakra healing, rune and oracle readings, and corporate wellness speaking engagements offered by Cheffy's Crystals in the Philippines.",
+          "url": `${SITE_URL}/services`,
+          "areaServed": ["Philippines", "Metro Manila", "Cavite"],
+          "serviceType": ["Crystal Consultation", "Rune Reading", "Oracle Reading", "Chakra Healing", "Crystal Gridding", "Corporate Wellness", "Speaking Engagement", "Workshop"],
+          "availableChannel": [
+            { "@type": "ServiceChannel", "serviceType": "Online", "name": "Online 1:1 Sessions" },
+            { "@type": "ServiceChannel", "serviceType": "In-Person", "name": "In-Person Sessions (Imus, Cavite)" }
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": `${SITE_URL}/#cheffy`,
+          "name": "Cheffy",
+          "jobTitle": "Crystal Consultant, Speaker & Founder",
+          "url": `${SITE_URL}/about`,
+          "worksFor": { "@id": `${SITE_URL}/#organization` },
+          "knowsAbout": [
+            "Crystal Healing", "Rune Reading", "Oracle Reading", "Chakra Healing",
+            "Crystal Gridding", "Corporate Wellness Philippines", "Holistic Energy Management",
+            "Piezoelectricity and Quartz", "Crystal Programming", "Tarot"
+          ],
+          "hasOccupation": [
+            { "@type": "Occupation", "name": "Crystal Consultant" },
+            { "@type": "Occupation", "name": "Wellness Speaker" },
+            { "@type": "Occupation", "name": "Corporate Wellness Facilitator" }
+          ],
+          "sameAs": [
+            "https://www.instagram.com/cheffyscrystals/",
+            "https://www.tiktok.com/@cheffyscrystals"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home",     "item": SITE_URL },
+            { "@type": "ListItem", "position": 2, "name": "Services", "item": `${SITE_URL}/services` }
+          ]
+        }
+      ]
     };
     let el = document.getElementById('schema-services');
     if (!el) { el = document.createElement('script'); el.id = 'schema-services'; el.type = 'application/ld+json'; document.head.appendChild(el); }
