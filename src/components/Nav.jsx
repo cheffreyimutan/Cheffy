@@ -28,11 +28,11 @@ export function Nav() {
           <Wordmark/>
           <nav className="nav__links" aria-label="Main navigation">
             <a className={'nav__link' + (pathname === '/' ? ' active' : '')} href={shopUrl} target="_blank" rel="noopener noreferrer">Shop</a>
+            <Link className={'nav__link' + is('/services')} to="/services">Services</Link>
             <a className="nav__link" href="/#guide">Crystal Guide</a>
             <Link className={'nav__link' + is('/blog')} to="/blog">Blog</Link>
             <Link className={'nav__link' + is('/about')} to="/about">Our Story</Link>
             <a className="nav__link" href="/#reviews">Reviews</a>
-            <Link className={'nav__link' + is('/services')} to="/services">Services</Link>
             <Link className={'nav__link' + is('/community')} to="/community">Community</Link>
           </nav>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
