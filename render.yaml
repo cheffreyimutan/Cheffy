@@ -2,11 +2,17 @@ services:
   - type: web
     name: cheffys-crystals
     env: static
-    buildCommand: npm install && npm run build && cp -rf dist/. .
+    buildCommand: npm install && npm run build
     envVars:
       - key: NODE_VERSION
         value: 20
     routes:
+      - type: rewrite
+        source: /sitemap.xml
+        destination: /sitemap.xml
+      - type: rewrite
+        source: /robots.txt
+        destination: /robots.txt
       - type: rewrite
         source: /*
         destination: /index.html
