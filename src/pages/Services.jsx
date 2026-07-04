@@ -168,10 +168,10 @@ export default function Services() {
             <p className="eyebrow" style={{ textAlign: 'center', marginBottom: 28 }}>✦ As seen & featured at</p>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, maxWidth: 860, margin: '0 auto' }} className="hero-grid">
               <div style={{ borderRadius: 'var(--r-xl)', overflow: 'hidden', aspectRatio: '16/9', boxShadow: 'var(--shadow-card)' }}>
-                <img src="/assets/tarot-con-2025.png" alt="Cheffy's Crystals — Featured Speaker at Tarot Con 2025" style={{ width: '100%', height: '100%', objectFit: 'cover' }}/>
+                <img src="/assets/tarot-con-2025.png" alt="Cheffy's Crystals — Featured Speaker at Tarot Con 2025" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}/>
               </div>
               <div style={{ borderRadius: 'var(--r-xl)', overflow: 'hidden', aspectRatio: '16/9', boxShadow: 'var(--shadow-card)' }}>
-                <img src="/assets/cheffy-speaking.png" alt="Cheffy speaking on stage as Founder of Cheffy's Crystals" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}/>
+                <img src="/assets/cheffy-speaking.png" alt="Cheffy speaking on stage as Founder of Cheffy's Crystals" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 70%' }}/>
               </div>
             </div>
           </div>
