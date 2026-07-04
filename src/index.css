@@ -257,11 +257,13 @@ p { line-height: 1.65; }
   .reviews-grid { grid-template-columns: 1fr 1fr !important; }
   .foot-grid { grid-template-columns: 1fr 1fr !important; }
   .hero-float { display: none !important; }
+  .gallery-grid { grid-template-columns: 1fr 1fr !important; }
 }
 @media (max-width: 600px){
   .guide-grid, .reviews-grid, .foot-grid { grid-template-columns: 1fr !important; }
   .wrap { padding: 0 18px; }
   .values-grid { grid-template-columns: 1fr !important; }
+  .gallery-grid { grid-template-columns: 1fr 1fr !important; }
 }
 
 /* BLOG */

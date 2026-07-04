@@ -115,6 +115,32 @@ function StoryBody() {
   );
 }
 
+function PhotoGallery() {
+  const photos = [
+    { src: '/assets/cheffy-booth-neon.jpg', alt: "Cheffy's Crystals booth with neon sign at a bazaar" },
+    { src: '/assets/booth-crowd.jpg',        alt: 'Crowd of shoppers at the Cheffy\'s Crystals booth' },
+    { src: '/assets/booth-browsing.jpg',     alt: 'Customers browsing crystals at the Cheffy\'s Crystals table' },
+    { src: '/assets/booth-consultation.jpg', alt: 'Cheffy helping a customer choose crystals and bracelets' },
+  ];
+  return (
+    <section className="bg-aura-2 section--tight" style={{ overflow: 'hidden' }}>
+      <div className="wrap" style={{ marginBottom: 20 }}>
+        <p className="eyebrow" style={{ textAlign: 'center' }}>✦ Cheffy's Crystals in the wild</p>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12, padding: '0 clamp(12px,2vw,28px) clamp(20px,3vw,40px)' }} className="gallery-grid">
+        {photos.map((p, i) => (
+          <div key={i} className="reveal" style={{ borderRadius: 'var(--r-xl)', overflow: 'hidden', aspectRatio: '3/4', boxShadow: 'var(--shadow-card)' }}>
+            <img src={p.src} alt={p.alt} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', transition: 'transform .4s ease' }}
+              onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
+              onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function Values() {
   const vals = [
     { icon: <Ic.shield/>, t: 'Authentic & honest',  d: "We're upfront about what's natural, dyed or reconstituted. No mystical markups, no half-truths." },
@@ -251,6 +277,7 @@ export default function About() {
       <main>
         <AboutHero/>
         <StoryBody/>
+        <PhotoGallery/>
         <Values/>
         <QuoteBand/>
         <FAQ/>

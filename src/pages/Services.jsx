@@ -162,23 +162,53 @@ export default function Services() {
           <div className="hairline"></div>
         </section>
 
-        {/* ── Service Categories ── */}
-        {CATEGORIES.map((cat, ci) => (
-          <section key={ci} className={ci % 2 === 0 ? 'bg-aura section' : 'bg-aura-2 section'}>
-            <div className="wrap">
-              <div style={{ marginBottom: 36 }}>
-                <p className="eyebrow" style={{ color: cat.c }}>✦ {cat.tag}</p>
-                <h2 className="display-l" style={{ marginTop: 14, color: 'var(--ink)' }}>{cat.title}</h2>
-                <p style={{ color: 'var(--ink-soft)', marginTop: 12, fontSize: 16, maxWidth: 640 }}>{cat.blurb}</p>
+        {/* ── Featured at ── */}
+        <section className="bg-aura section--tight">
+          <div className="wrap">
+            <p className="eyebrow" style={{ textAlign: 'center', marginBottom: 28 }}>✦ As seen & featured at</p>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, maxWidth: 860, margin: '0 auto' }} className="hero-grid">
+              <div style={{ borderRadius: 'var(--r-xl)', overflow: 'hidden', aspectRatio: '16/9', boxShadow: 'var(--shadow-card)' }}>
+                <img src="/assets/tarot-con-2025.jpg" alt="Cheffy's Crystals — Featured Speaker at Tarot Con 2025" style={{ width: '100%', height: '100%', objectFit: 'cover' }}/>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cat.services.length > 1 ? 2 : 1},1fr)`, gap: 20 }} className={cat.services.length > 1 ? 'hero-grid' : ''}>
-                {cat.services.map((s, si) => (
-                  <ServiceCard key={si} s={s} cat={cat}/>
-                ))}
+              <div style={{ borderRadius: 'var(--r-xl)', overflow: 'hidden', aspectRatio: '16/9', boxShadow: 'var(--shadow-card)' }}>
+                <img src="/assets/cheffy-speaking.jpg" alt="Cheffy speaking on stage as Founder of Cheffy's Crystals" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}/>
               </div>
             </div>
-          </section>
-        ))}
+          </div>
+        </section>
+
+        {/* ── Service Categories ── */}
+        {CATEGORIES.map((cat, ci) => {
+          const photos = ci === 1
+            ? [{ src: '/assets/cheffy-workshop-grid.jpg', alt: "Cheffy leading a Let's Grid workshop — Tarot Reader's Crystal Grid" },
+               { src: '/assets/cheffy-workshop-demo.jpg', alt: 'Cheffy doing a live crystal grid demo with a workshop participant' }]
+            : null;
+          return (
+            <section key={ci} className={ci % 2 === 0 ? 'bg-aura section' : 'bg-aura-2 section'}>
+              <div className="wrap">
+                <div style={{ marginBottom: 36 }}>
+                  <p className="eyebrow" style={{ color: cat.c }}>✦ {cat.tag}</p>
+                  <h2 className="display-l" style={{ marginTop: 14, color: 'var(--ink)' }}>{cat.title}</h2>
+                  <p style={{ color: 'var(--ink-soft)', marginTop: 12, fontSize: 16, maxWidth: 640 }}>{cat.blurb}</p>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cat.services.length > 1 ? 2 : 1},1fr)`, gap: 20 }} className={cat.services.length > 1 ? 'hero-grid' : ''}>
+                  {cat.services.map((s, si) => (
+                    <ServiceCard key={si} s={s} cat={cat}/>
+                  ))}
+                </div>
+                {photos && (
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 28 }} className="hero-grid">
+                    {photos.map((p, i) => (
+                      <div key={i} style={{ borderRadius: 'var(--r-xl)', overflow: 'hidden', aspectRatio: '4/3', boxShadow: 'var(--shadow-card)' }}>
+                        <img src={p.src} alt={p.alt} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}/>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </section>
+          );
+        })}
 
         {/* ── Inquiry Form ── */}
         <section id="inquire" className="bg-cosmic section" style={{ position: 'relative', overflow: 'hidden' }}>
