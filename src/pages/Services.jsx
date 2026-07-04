@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Nav, Footer } from '../components/Nav';
 import { Ic, Spark } from '../components/Icons';
 import { useReveal } from '../hooks/useReveal';
 
-// ─── Replace with your Formspree form ID (formspree.io → New Form → target email: cheff.crystals@gmail.com) ───
-const FORMSPREE = 'https://formspree.io/f/YOUR_FORM_ID';
-
+const GOOGLE_FORM_SRC = 'https://docs.google.com/forms/d/e/1FAIpQLSf8GRkk7XeuZQhiHKFlXJN6bAPxAitts23VBSc19F7NVSxlhw/viewform?embedded=true';
 const SITE_URL = 'https://cheffyscrystals.com';
 
 function SEOMeta() {
@@ -39,18 +37,14 @@ const CATEGORIES = [
     c: 'var(--magenta)',
     services: [
       {
-        id: 'rune-oracle',
         name: 'Rune & Oracle Reading + Crystal Consultation',
         desc: 'A deeply personal session combining rune casting and oracle cards with a tailored crystal recommendation. Ideal for anyone seeking clarity, direction, or energetic unblocking — wherever you are right now.',
         formats: ['Available Online', 'Available In-Person'],
-        label: 'Rune & Oracle Reading + Crystal Consultation',
       },
       {
-        id: 'crystal-chakra',
         name: 'Crystal Consultation, Programming & Chakra Healing',
         desc: "A focused session to identify the right crystals for your current energy, program them with your intentions, and address chakra imbalances. Crystals may be provided by the client or sourced directly from Cheffy's premium catalog.",
         formats: ['Available Online', 'Available In-Person'],
-        label: 'Crystal Consultation, Programming & Chakra Healing',
       },
     ],
   },
@@ -61,18 +55,14 @@ const CATEGORIES = [
     c: 'var(--cyan)',
     services: [
       {
-        id: 'webinar',
         name: 'Community & Virtual Webinars',
         desc: 'A 30-minute interactive digital or in-person community presentation. Topics include Crystal 101, beginner energy basics, and practical tools for daily wellness. Perfect for wellness groups, barangay programs, and online communities.',
         formats: ['Virtual / Online', 'In-Person Community'],
-        label: 'Community & Virtual Webinar',
       },
       {
-        id: 'corporate-workshop',
         name: 'Corporate Wellness Workshop',
         desc: 'A premium 30-minute in-person seminar blending the science of energy, productivity strategies, and holistic wellness tools. Tailored for HR teams, executive groups, and forward-thinking organizations looking to invest in their people.',
         formats: ['In-Person'],
-        label: 'Corporate Wellness Workshop',
       },
     ],
   },
@@ -83,18 +73,14 @@ const CATEGORIES = [
     c: 'var(--gold)',
     services: [
       {
-        id: 'keynote',
         name: 'Corporate Keynote: Crystals in the Modern Day World',
-        desc: "A signature 30-minute keynote designed for tech startups and corporate networks. Covers the science of piezoelectricity, how quartz powers our devices and interacts with human energy, executive stone selection for high-performance environments, and actionable strategies to counter digital fatigue. Includes a live Q&A segment and exclusive curated resource access for attendees.",
+        desc: "A signature 30-minute keynote designed for tech startups and corporate networks. Covers the science of piezoelectricity, executive stone selection, and actionable strategies to counter digital fatigue. Includes a live Q&A segment and exclusive curated resource access for attendees.",
         formats: ['In-Person Keynote', 'Live Q&A Included'],
-        label: 'Corporate Keynote: Crystals in the Modern Day World',
       },
       {
-        id: 'team-workshop',
         name: 'Interactive Team Workshops',
-        desc: "Two formats available. Crystal 101 & Live Demonstration: an engaging, hands-on primer where participants learn to identify, cleanse, and use foundational stones — with live energy demonstrations. Crystal Gridding for Workspace Wellbeing: a visually stunning workshop teaching teams to build geometric crystal configurations to manifest focus, synergy, and abundance in their shared environment.",
+        desc: "Two formats available. Crystal 101 & Live Demonstration: an engaging, hands-on primer where participants learn to identify, cleanse, and use foundational stones. Crystal Gridding for Workspace Wellbeing: teams build geometric crystal configurations to manifest focus, synergy, and abundance in their shared environment.",
         formats: ['Crystal 101 & Live Demo', 'Crystal Gridding Workshop'],
-        label: 'Interactive Team Workshop',
       },
     ],
   },
@@ -105,28 +91,15 @@ const CATEGORIES = [
     c: 'var(--magenta-2)',
     services: [
       {
-        id: 'partnership',
         name: 'Anchor Merchant & Pop-Up Setup',
         desc: "Bring Cheffy's Crystals to your event as a featured vendor or anchor merchant. We handle the setup, the storytelling, and the selling — you get an elevated, memorable experience for your guests. Also available as an add-on to any corporate keynote booking.",
         formats: ['Event Pop-Ups', 'Corporate Retreats', 'VIP Experiences'],
-        label: 'Anchor Merchant / Pop-Up Partnership',
       },
     ],
   },
 ];
 
-const SERVICE_OPTIONS = [
-  'Rune & Oracle Reading + Crystal Consultation',
-  'Crystal Consultation, Programming & Chakra Healing',
-  'Community & Virtual Webinar',
-  'Corporate Wellness Workshop',
-  'Corporate Keynote: Crystals in the Modern Day World',
-  'Interactive Team Workshop',
-  'Anchor Merchant / Pop-Up Partnership',
-  "I'm not sure yet — help me choose",
-];
-
-function ServiceCard({ s, cat, onInquire }) {
+function ServiceCard({ s, cat }) {
   return (
     <div className="reveal" style={{
       background: '#fff',
@@ -148,125 +121,19 @@ function ServiceCard({ s, cat, onInquire }) {
           <span key={i} className="chip" style={{ background: 'var(--cream-2)', color: 'var(--ink-soft)', fontSize: 12.5, letterSpacing: 0, textTransform: 'none' }}>{f}</span>
         ))}
       </div>
-      <button
-        onClick={() => onInquire(s.label)}
+      <a
+        href="#inquire"
         className="btn btn--gold btn--sm"
-        style={{ alignSelf: 'flex-start', marginTop: 'auto' }}
+        style={{ alignSelf: 'flex-start', marginTop: 'auto', textDecoration: 'none' }}
       >
         Send an enquiry <Ic.arrow width="15" height="15"/>
-      </button>
+      </a>
     </div>
-  );
-}
-
-function InquiryForm({ preset }) {
-  const [fields, setFields] = useState({ name: '', email: '', phone: '', service: preset || '', message: '' });
-  const [status, setStatus] = useState('idle');
-
-  useEffect(() => {
-    if (preset) setFields(f => ({ ...f, service: preset }));
-  }, [preset]);
-
-  const set = (k) => (e) => setFields(f => ({ ...f, [k]: e.target.value }));
-
-  const submit = async (e) => {
-    e.preventDefault();
-    setStatus('sending');
-    try {
-      const res = await fetch(FORMSPREE, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          name: fields.name,
-          email: fields.email,
-          phone: fields.phone || 'Not provided',
-          service: fields.service,
-          message: fields.message,
-          _subject: `Service Inquiry: ${fields.service}`,
-        }),
-      });
-      setStatus(res.ok ? 'success' : 'error');
-    } catch {
-      setStatus('error');
-    }
-  };
-
-  const inputStyle = {
-    width: '100%', boxSizing: 'border-box',
-    padding: '13px 16px',
-    border: '1.5px solid var(--cream-3)',
-    borderRadius: 'var(--r)',
-    fontFamily: 'var(--body)',
-    fontSize: 15,
-    color: 'var(--ink)',
-    background: '#fff',
-    outline: 'none',
-    transition: 'border-color .2s',
-  };
-  const labelStyle = { fontFamily: 'var(--display)', fontWeight: 600, fontSize: 13.5, color: 'var(--ink)', marginBottom: 6, display: 'block' };
-
-  if (status === 'success') return (
-    <div style={{ textAlign: 'center', padding: '60px 24px' }}>
-      <Spark size={36} color="var(--gold)" style={{ margin: '0 auto 20px' }}/>
-      <h3 style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 26, color: 'var(--ink)' }}>Message received!</h3>
-      <p style={{ color: 'var(--ink-soft)', fontSize: 16, marginTop: 10, maxWidth: 420, margin: '10px auto 0' }}>
-        We'll get back to you within 24–48 hours. In the meantime, feel free to browse our shop or follow us on Instagram and TikTok.
-      </p>
-    </div>
-  );
-
-  return (
-    <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }} className="hero-grid">
-        <div>
-          <label style={labelStyle}>Full Name *</label>
-          <input required style={inputStyle} value={fields.name} onChange={set('name')} placeholder="Your name"/>
-        </div>
-        <div>
-          <label style={labelStyle}>Email Address *</label>
-          <input required type="email" style={inputStyle} value={fields.email} onChange={set('email')} placeholder="you@email.com"/>
-        </div>
-      </div>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }} className="hero-grid">
-        <div>
-          <label style={labelStyle}>Phone / WhatsApp <span style={{ fontWeight: 400, color: 'var(--ink-muted)' }}>(optional)</span></label>
-          <input style={inputStyle} value={fields.phone} onChange={set('phone')} placeholder="+63 9XX XXX XXXX"/>
-        </div>
-        <div>
-          <label style={labelStyle}>Service I'm interested in *</label>
-          <select required style={{ ...inputStyle, appearance: 'none', backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237A6B96' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 14px center', paddingRight: 40 }}
-            value={fields.service} onChange={set('service')}>
-            <option value="">Select a service…</option>
-            {SERVICE_OPTIONS.map((o, i) => <option key={i} value={o}>{o}</option>)}
-          </select>
-        </div>
-      </div>
-      <div>
-        <label style={labelStyle}>Tell us more *</label>
-        <textarea required rows={5} style={{ ...inputStyle, resize: 'vertical', lineHeight: 1.6 }}
-          value={fields.message} onChange={set('message')}
-          placeholder="What are you hoping to get out of this session? Any questions, dates in mind, group size, or context you'd like to share — the more you tell us, the better we can help."/>
-      </div>
-      {status === 'error' && (
-        <p style={{ color: '#d93025', fontSize: 14, margin: 0 }}>
-          Something went wrong. Please try again or email us directly at <a href="mailto:cheff.crystals@gmail.com" style={{ color: 'var(--price)' }}>cheff.crystals@gmail.com</a>.
-        </p>
-      )}
-      <button type="submit" disabled={status === 'sending'} className="btn btn--neon" style={{ alignSelf: 'flex-start' }}>
-        {status === 'sending' ? 'Sending…' : 'Send enquiry'} {status !== 'sending' && <Ic.arrow/>}
-      </button>
-    </form>
   );
 }
 
 export default function Services() {
   useReveal();
-  const [preset, setPreset] = useState('');
-
-  const handleInquire = (label) => {
-    setPreset(label);
-    document.getElementById('inquire')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
 
   return (
     <>
@@ -306,7 +173,7 @@ export default function Services() {
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cat.services.length > 1 ? 2 : 1},1fr)`, gap: 20 }} className={cat.services.length > 1 ? 'hero-grid' : ''}>
                 {cat.services.map((s, si) => (
-                  <ServiceCard key={si} s={s} cat={cat} onInquire={handleInquire}/>
+                  <ServiceCard key={si} s={s} cat={cat}/>
                 ))}
               </div>
             </div>
@@ -316,7 +183,7 @@ export default function Services() {
         {/* ── Inquiry Form ── */}
         <section id="inquire" className="bg-cosmic section" style={{ position: 'relative', overflow: 'hidden' }}>
           <div className="nebula"></div>
-          <div className="wrap" style={{ position: 'relative', maxWidth: 860 }}>
+          <div className="wrap" style={{ position: 'relative', maxWidth: 760 }}>
             <div style={{ textAlign: 'center', marginBottom: 44 }}>
               <p className="eyebrow--magenta eyebrow">✦ Let's talk</p>
               <h2 className="display-l" style={{ marginTop: 14 }}>Send us an enquiry.</h2>
@@ -324,8 +191,19 @@ export default function Services() {
                 No commitment needed — just tell us what you're looking for and we'll get back to you within 24–48 hours.
               </p>
             </div>
-            <div style={{ background: 'var(--cream)', borderRadius: 'var(--r-xl)', padding: 'clamp(28px,4vw,48px)', boxShadow: 'var(--shadow-card)' }}>
-              <InquiryForm preset={preset}/>
+            <div style={{ borderRadius: 'var(--r-xl)', overflow: 'hidden', boxShadow: 'var(--shadow-card)' }}>
+              <iframe
+                src={GOOGLE_FORM_SRC}
+                width="100%"
+                height="1845"
+                frameBorder="0"
+                marginHeight="0"
+                marginWidth="0"
+                title="Service Enquiry Form"
+                style={{ display: 'block' }}
+              >
+                Loading…
+              </iframe>
             </div>
             <p style={{ textAlign: 'center', marginTop: 20, fontSize: 13.5, color: 'var(--muted)' }}>
               Prefer to email directly? Reach us at{' '}
