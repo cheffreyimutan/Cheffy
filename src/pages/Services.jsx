@@ -235,10 +235,6 @@ export default function Services() {
                 Loading…
               </iframe>
             </div>
-            <p style={{ textAlign: 'center', marginTop: 20, fontSize: 13.5, color: 'var(--muted)' }}>
-              Prefer to email directly? Reach us at{' '}
-              <a href="mailto:cheff.crystals@gmail.com" style={{ color: 'var(--cyan)', textDecoration: 'underline' }}>cheff.crystals@gmail.com</a>
-            </p>
           </div>
         </section>
       </main>
