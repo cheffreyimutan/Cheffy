@@ -200,7 +200,7 @@ export default function Services() {
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 28 }} className="hero-grid">
                     {photos.map((p, i) => (
                       <div key={i} style={{ borderRadius: 'var(--r-xl)', overflow: 'hidden', aspectRatio: '4/3', boxShadow: 'var(--shadow-card)' }}>
-                        <img src={p.src} alt={p.alt} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}/>
+                        <img src={p.src} alt={p.alt} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 65%' }}/>
                       </div>
                     ))}
                   </div>
@@ -210,31 +210,31 @@ export default function Services() {
           );
         })}
 
-        {/* ── Inquiry Form ── */}
+        {/* ── Inquiry CTA ── */}
         <section id="inquire" className="bg-cosmic section" style={{ position: 'relative', overflow: 'hidden' }}>
           <div className="nebula"></div>
-          <div className="wrap" style={{ position: 'relative', maxWidth: 760 }}>
-            <div style={{ textAlign: 'center', marginBottom: 44 }}>
-              <p className="eyebrow--magenta eyebrow">✦ Let's talk</p>
-              <h2 className="display-l" style={{ marginTop: 14 }}>Send us an enquiry.</h2>
-              <p style={{ color: 'var(--muted)', marginTop: 12, fontSize: 16, maxWidth: 520, margin: '12px auto 0' }}>
-                No commitment needed — just tell us what you're looking for and we'll get back to you within 24–48 hours.
-              </p>
-            </div>
-            <div style={{ borderRadius: 'var(--r-xl)', overflow: 'hidden', boxShadow: 'var(--shadow-card)' }}>
-              <iframe
-                src={GOOGLE_FORM_SRC}
-                width="100%"
-                height="1845"
-                frameBorder="0"
-                marginHeight="0"
-                marginWidth="0"
-                title="Service Enquiry Form"
-                style={{ display: 'block' }}
+          <Spark size={22} color="var(--gold)" style={{ position: 'absolute', top: '20%', right: '8%', opacity: .7 }}/>
+          <Spark size={14} color="var(--cyan)" style={{ position: 'absolute', bottom: '20%', left: '6%', opacity: .6 }}/>
+          <div className="wrap" style={{ position: 'relative', maxWidth: 680, textAlign: 'center' }}>
+            <p className="eyebrow--magenta eyebrow">✦ Let's talk</p>
+            <h2 className="display-l" style={{ marginTop: 14 }}>Ready to work together?</h2>
+            <p style={{ color: 'var(--muted)', marginTop: 16, fontSize: 17, lineHeight: 1.7, maxWidth: 480, margin: '16px auto 0' }}>
+              Fill out our enquiry form and Cheffy or a team member will get back to you within 24–48 hours. No commitment needed.
+            </p>
+            <div style={{ marginTop: 36, display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a
+                href={GOOGLE_FORM_SRC.replace('?embedded=true', '')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn--neon"
+                style={{ textDecoration: 'none', fontSize: 17, padding: '16px 36px' }}
               >
-                Loading…
-              </iframe>
+                Send an enquiry <Ic.arrow/>
+              </a>
             </div>
+            <p style={{ marginTop: 20, fontSize: 13, color: 'var(--muted-2)', fontFamily: 'var(--mono)' }}>
+              Opens a short form · takes 2 minutes
+            </p>
           </div>
         </section>
       </main>
