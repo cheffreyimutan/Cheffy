@@ -167,6 +167,89 @@ function Hero({ onShop }) {
   );
 }
 
+// ASEAN Online Sale Day 2026 — official participation section (08–10 Aug 2026).
+// Logo & creatives from the DTI AOSD 2026 kit. Per the guidelines the official logo
+// must be displayed on 08–10 August 2026 and removed on 11 August 2026.
+const AOSD = {
+  blue: '#12369B',
+  red: '#E42313',
+  code: 'AOSD2026',
+  dtiMicrosite: 'https://www.dti.gov.ph/asean-online-sale-day-2026',
+  aseanSite: 'http://aosd.asean2026.gov.ph/',
+};
+
+function AseanSaleDay() {
+  return (
+    <section id="asean-sale" className="section--tight" style={{ background: `linear-gradient(180deg,#fff 0%,#eef2fb 100%)`, position: 'relative' }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 5, background: `linear-gradient(90deg,${AOSD.blue} 0 50%,${AOSD.red} 50% 100%)` }} />
+      <div className="wrap">
+        <div className="reveal" style={{ background: '#fff', borderRadius: 'var(--r-xl)', boxShadow: '0 30px 70px -34px rgba(18,54,155,.35)', overflow: 'hidden', border: '1px solid #e3e8f5' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1.05fr .95fr', gap: 'clamp(24px,4vw,56px)', alignItems: 'center' }} className="hero-grid">
+            {/* Left — copy */}
+            <div style={{ padding: 'clamp(28px,4vw,48px)' }}>
+              <span className="chip" style={{ background: 'rgba(18,54,155,.08)', color: AOSD.blue, boxShadow: `inset 0 0 0 1px rgba(18,54,155,.25)`, letterSpacing: '.08em' }}>
+                ✦ Official participant · ASEAN Online Sale Day 2026
+              </span>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: 18, margin: '20px 0 6px' }}>
+                <img src="/assets/aosd-logo.png" alt="ASEAN Online Sale Day 2026 official logo — A Click to Prosperity, 8–10 August 2026" width="96" height="109" style={{ flexShrink: 0, height: 'auto' }} />
+                <h2 className="display-m" style={{ color: AOSD.blue, fontSize: 'clamp(24px,3.4vw,38px)', lineHeight: 1.05, margin: 0 }}>
+                  We're joining the<br/>ASEAN <span style={{ color: AOSD.red }}>8.8</span> Online Sale.
+                </h2>
+              </div>
+
+              <p style={{ color: 'var(--ink-soft)', fontSize: 'clamp(15px,1.5vw,16.5px)', lineHeight: 1.65, maxWidth: 520, marginTop: 14 }}>
+                Cheffy's Crystals is proud to take part in the <b style={{ color: 'var(--ink)' }}>ASEAN Online Sale Day 2026</b> — a
+                region-wide celebration of e-commerce across Southeast Asia under the theme <i>"A Click to Prosperity."</i> For three
+                days only, get an <b style={{ color: AOSD.red }}>extra 10% off</b> your order.
+              </p>
+
+              {/* Dates + code */}
+              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', margin: '22px 0 24px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: AOSD.blue, color: '#fff', borderRadius: 'var(--r)', padding: '12px 18px' }}>
+                  <Ic.pin width="16" height="16" />
+                  <div style={{ lineHeight: 1.2 }}>
+                    <div style={{ fontFamily: 'var(--mono)', fontSize: 10.5, letterSpacing: '.12em', textTransform: 'uppercase', opacity: .8 }}>Sale runs</div>
+                    <div style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 15 }}>Aug 8–10, 2026</div>
+                  </div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, borderRadius: 'var(--r)', padding: '12px 18px', background: '#fff', border: `2px dashed ${AOSD.red}` }}>
+                  <div style={{ lineHeight: 1.2 }}>
+                    <div style={{ fontFamily: 'var(--mono)', fontSize: 10.5, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--ink-muted)' }}>Use code</div>
+                    <div style={{ fontFamily: 'var(--display)', fontWeight: 800, fontSize: 16, color: AOSD.red, letterSpacing: '.04em' }}>{AOSD.code}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
+                <a className="btn" href={shopUrl} target="_blank" rel="noopener noreferrer" style={{ background: AOSD.red, color: '#fff', textDecoration: 'none' }}>
+                  Shop the 8.8 sale <Ic.arrow/>
+                </a>
+                <a className="btn btn--ghost" href={AOSD.aseanSite} target="_blank" rel="noopener noreferrer" style={{ color: AOSD.blue, boxShadow: `inset 0 0 0 1.5px ${AOSD.blue}` }}>
+                  View participating stores
+                </a>
+              </div>
+
+              <p style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink-muted)', marginTop: 22, lineHeight: 1.7 }}>
+                A DTI-led initiative for Filipino e-commerce · #AOSD2026 #SAILASEAN<br/>
+                Find participants on the{' '}
+                <a href={AOSD.dtiMicrosite} target="_blank" rel="noopener noreferrer" style={{ color: AOSD.blue, textDecoration: 'underline', textUnderlineOffset: '3px' }}>DTI microsite</a>{' '}
+                and the{' '}
+                <a href={AOSD.aseanSite} target="_blank" rel="noopener noreferrer" style={{ color: AOSD.blue, textDecoration: 'underline', textUnderlineOffset: '3px' }}>ASEAN 2026 website</a>.
+              </p>
+            </div>
+
+            {/* Right — official banner */}
+            <div style={{ alignSelf: 'stretch', minHeight: 280, position: 'relative' }}>
+              <img src="/assets/aosd-banner.jpg" alt="ASEAN Online Sale Day 2026 — 8.8 sale, 8–10 August 2026" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function AsSeenTikTok() {
   const url = 'https://www.tiktok.com/@cheffyscrystals/video/7526548660553878791';
   return (
@@ -465,6 +548,7 @@ export default function Home() {
       <Nav/>
       <main>
         <Hero onShop={() => document.getElementById('shop')?.scrollIntoView({ behavior: 'smooth' })}/>
+        <AseanSaleDay/>
         <AsSeenTikTok/>
         <TrustBar/>
         <Shop/>
