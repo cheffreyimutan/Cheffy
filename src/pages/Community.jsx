@@ -71,8 +71,8 @@ export default function Community() {
               A warm corner of the internet for Filipino crystal lovers — beginners and collectors alike. Share your finds, ask questions, and grow your collection with good people and good energy.
             </p>
             <div style={{ display: 'flex', gap: 14, justifyContent: 'center', marginTop: 34, flexWrap: 'wrap' }}>
-              <a className="btn btn--neon" href={FB_GROUP} target="_blank" rel="noopener noreferrer">Join the group <Ic.arrow/></a>
-              <a className="btn btn--ghost" href={shopUrl} target="_blank" rel="noopener noreferrer">Shop crystals</a>
+              <a className="btn btn--neon" href={FB_GROUP} target="_blank" rel="noopener">Join the group <Ic.arrow/></a>
+              <a className="btn btn--ghost" href={shopUrl} target="_blank" rel="noopener">Shop crystals</a>
             </div>
           </div>
           <div className="hairline"></div>
@@ -94,7 +94,7 @@ export default function Community() {
               <span style={{ color: '#fff', display: 'inline-flex', marginBottom: 12 }}><FbGlyph width="34" height="34"/></span>
               <h2 className="display-m" style={{ color: '#fff', fontSize: 'clamp(22px,3vw,32px)' }}>Cheffy's Crystals Community</h2>
               <p style={{ color: 'rgba(255,255,255,.9)', maxWidth: 460, margin: '10px auto 22px', fontSize: 15.5 }}>Join the group on Facebook — it's free, friendly, and full of crystal goodness.</p>
-              <a className="btn" href={FB_GROUP} target="_blank" rel="noopener noreferrer" style={{ background: '#fff', color: '#1877F2' }}>Join the community <Ic.arrow/></a>
+              <a className="btn" href={FB_GROUP} target="_blank" rel="noopener" style={{ background: '#fff', color: '#1877F2' }}>Join the community <Ic.arrow/></a>
             </div>
           </div>
         </section>

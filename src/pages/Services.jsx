@@ -243,7 +243,7 @@ export default function Services() {
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 28 }} className="hero-grid">
                     {photos.map((p, i) => (
                       <div key={i} style={{ borderRadius: 'var(--r-xl)', overflow: 'hidden', aspectRatio: '4/3', boxShadow: 'var(--shadow-card)' }}>
-                        <img src={p.src} alt={p.alt} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 65%' }}/>
+                        <img src={p.src} alt={p.alt} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 65%' }}/>
                       </div>
                     ))}
                   </div>
@@ -268,7 +268,7 @@ export default function Services() {
               <a
                 href={GOOGLE_FORM_SRC.replace('?embedded=true', '')}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 className="btn btn--neon"
                 style={{ textDecoration: 'none', fontSize: 17, padding: '16px 36px' }}
               >

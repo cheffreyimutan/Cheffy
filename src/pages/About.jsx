@@ -203,7 +203,7 @@ function linkify(text) {
   const parts = text.split(/(https?:\/\/[^\s]+)/g);
   return parts.map((part, i) =>
     part.match(/^https?:\/\//)
-      ? <a key={i} href={part} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--price)', textDecoration: 'underline', wordBreak: 'break-all' }}>{part}</a>
+      ? <a key={i} href={part} target="_blank" rel="noopener" style={{ color: 'var(--price)', textDecoration: 'underline', wordBreak: 'break-all' }}>{part}</a>
       : part
   );
 }
@@ -257,7 +257,7 @@ function FindUs() {
           {socials.map((x, i) => {
             const G = SocialGlyph[x.s];
             return (
-              <a key={i} href={x.url} target="_blank" rel="noopener noreferrer" className="review-card reveal" style={{ alignItems: 'flex-start', cursor: 'pointer' }}>
+              <a key={i} href={x.url} target="_blank" rel="noopener" className="review-card reveal" style={{ alignItems: 'flex-start', cursor: 'pointer' }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: 9, color: x.c }}>{G && <G/>}<span style={{ fontFamily: 'var(--mono)', fontWeight: 700, fontSize: 13, letterSpacing: '.1em' }}>{x.s.toUpperCase()}</span></span>
                 <div style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 17, color: '#fff' }}>{x.h}</div>
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'var(--muted)', fontSize: 13, marginTop: 'auto' }}>Visit <Ic.arrow width="15" height="15"/></span>
@@ -266,7 +266,7 @@ function FindUs() {
           })}
         </div>
         <div style={{ textAlign: 'center' }}>
-          <a className="btn btn--neon" href={shopUrl} target="_blank" rel="noopener noreferrer">Start shopping <Ic.arrow/></a>
+          <a className="btn btn--neon" href={shopUrl} target="_blank" rel="noopener">Start shopping <Ic.arrow/></a>
         </div>
       </div>
     </section>

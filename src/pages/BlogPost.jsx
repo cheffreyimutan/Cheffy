@@ -145,7 +145,7 @@ export default function BlogPost() {
                 <div className="script" style={{ fontSize: 28, color: 'var(--magenta-2)', lineHeight: 1 }}>Ready to start?</div>
                 <p style={{ margin: '6px 0 0', color: 'var(--ink-soft)', fontSize: 15 }}>Browse hand-checked, affordable crystals — from ₱20.</p>
               </div>
-              <a className="btn btn--neon" href={shopUrl} target="_blank" rel="noopener noreferrer">Shop crystals <Ic.arrow/></a>
+              <a className="btn btn--neon" href={shopUrl} target="_blank" rel="noopener">Shop crystals <Ic.arrow/></a>
             </div>
           </div>
         </section>

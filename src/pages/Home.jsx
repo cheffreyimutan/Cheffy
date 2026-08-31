@@ -172,7 +172,7 @@ function AsSeenTikTok() {
   return (
     <section className="bg-cosmic section--tight">
       <div className="wrap">
-        <a href={url} target="_blank" rel="noopener noreferrer" className="tiktok-band reveal">
+        <a href={url} target="_blank" rel="noopener" className="tiktok-band reveal">
           <div className="tiktok-band__thumb">
             <img src="/assets/cheffy-booth.jpg" alt="Cheffy at her crystal booth — as seen on TikTok @cheffyscrystals"/>
             <span className="tiktok-band__play"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
@@ -233,7 +233,7 @@ function Shop() {
             <h2 className="display-l" style={{ marginTop: 14, color: 'var(--ink)' }}>Find a little magic.</h2>
             <p style={{ color: 'var(--ink-soft)', maxWidth: 440, marginTop: 12, fontSize: 15.5 }}>Browse by what you need — calm, love, protection, abundance. Tap a stone to learn what it's for.</p>
           </div>
-          <a className="btn btn--gold btn--sm" href={shopUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', flexShrink: 0 }}>Shop the full store <Ic.arrow/></a>
+          <a className="btn btn--gold btn--sm" href={shopUrl} target="_blank" rel="noopener" style={{ textDecoration: 'none', flexShrink: 0 }}>Shop the full store <Ic.arrow/></a>
         </div>
         <p style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink-muted)', marginTop: 12 }}>
           Browse a preview below — the complete catalogue &amp; secure checkout live on our official store. {list.length} of {products.length} shown.
@@ -293,10 +293,9 @@ function Guide() {
 }
 
 function Events() {
-  const events = [
-    { mo: 'JUL', day: '12', year: '2026', name: 'May–December Affair', venue: 'San Lorenzo Village, Makati' },
-    { mo: 'JUL', day: '25', year: '2026', name: 'Enchanté Fair',       venue: 'Festival Mall, Alabang' },
-  ];
+  // No confirmed upcoming bazaars right now — add future dates here as they're booked.
+  const events = [];
+  if (events.length === 0) return null;
   return (
     <section id="events" className="bg-aura section">
       <div className="wrap">
@@ -343,13 +342,13 @@ function DeliveryBand() {
               Order straight from <b style={{ color: '#fff' }}>shop.cheffyscrystals.com</b> and your <b style={{ color: 'var(--cyan)' }}>10% direct discount</b> is applied automatically — it's always the best price you'll find. We hand-pack every parcel and ship nationwide via J&amp;T, Shopee &amp; TikTok.
             </p>
             <div style={{ display: 'flex', gap: 14, marginTop: 24, flexWrap: 'wrap', alignItems: 'center' }}>
-              <a className="btn btn--neon" href={shopUrl} target="_blank" rel="noopener noreferrer">Buy direct &amp; save 10% <Ic.arrow/></a>
+              <a className="btn btn--neon" href={shopUrl} target="_blank" rel="noopener">Buy direct &amp; save 10% <Ic.arrow/></a>
               <span className="chip" style={{ background: 'rgba(52,227,255,.12)', color: 'var(--cyan)', boxShadow: 'inset 0 0 0 1px rgba(52,227,255,.3)' }}>
                 <Ic.pin width="14" height="14"/> Nationwide delivery
               </span>
             </div>
             <p style={{ color: 'var(--muted)', marginTop: 16, fontSize: 14.5 }}>
-              We ship nationwide. Same-day delivery also available in select areas — <a href="https://www.instagram.com/cheffyscrystals/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--cyan)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>inquire here</a>.
+              We ship nationwide. Same-day delivery also available in select areas — <a href="https://www.instagram.com/cheffyscrystals/" target="_blank" rel="noopener" style={{ color: 'var(--cyan)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>inquire here</a>.
             </p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>

@@ -25,7 +25,7 @@ export function ProductCard({ p }) {
         <meta itemProp="priceCurrency" content="PHP"/>
         <meta itemProp="price" content={p.price}/>
         <p className="card__trust">Ships nationwide · GCash, Maya &amp; cards accepted</p>
-        <a className="btn btn--ink btn--sm btn--block" href={productUrl} target="_blank" rel="noopener noreferrer" style={{ marginTop: 'auto', textDecoration: 'none' }}>
+        <a className="btn btn--ink btn--sm btn--block" href={productUrl} target="_blank" rel="noopener" style={{ marginTop: 'auto', textDecoration: 'none' }}>
           Shop Now <Ic.arrow width="15" height="15"/>
         </a>
       </div>

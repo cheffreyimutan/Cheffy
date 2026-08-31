@@ -30,7 +30,7 @@ export function Nav() {
 
   const navLinks = (
     <>
-      <a className={'nav__link' + (pathname === '/' ? ' active' : '')} href={shopUrl} target="_blank" rel="noopener noreferrer">Shop</a>
+      <a className={'nav__link' + (pathname === '/' ? ' active' : '')} href={shopUrl} target="_blank" rel="noopener">Shop</a>
       <Link className={'nav__link' + is('/services')} to="/services">Services</Link>
       <a className="nav__link" href="/#guide" onClick={() => setOpen(false)}>Crystal Guide</a>
       <Link className={'nav__link' + is('/blog')} to="/blog">Blog</Link>
@@ -50,7 +50,7 @@ export function Nav() {
             {navLinks}
           </nav>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <a className="btn btn--neon btn--sm nav__shop-btn" href={shopUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>Shop <Ic.arrow width="15" height="15"/></a>
+            <a className="btn btn--neon btn--sm nav__shop-btn" href={shopUrl} target="_blank" rel="noopener" style={{ textDecoration: 'none' }}>Shop <Ic.arrow width="15" height="15"/></a>
             <button
               type="button"
               className="nav__mobile-toggle icon-btn"
@@ -91,7 +91,7 @@ export function Footer() {
           <div>
             <div className="eyebrow" style={{ marginBottom: 16 }}>Explore</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <a className="foot-link" href={shopUrl} target="_blank" rel="noopener noreferrer">Shop</a>
+              <a className="foot-link" href={shopUrl} target="_blank" rel="noopener">Shop</a>
               <a className="foot-link" href="/#guide">Crystal Guide</a>
               <Link className="foot-link" to="/blog">Blog</Link>
               <Link className="foot-link" to="/about">Our Story</Link>
@@ -106,7 +106,7 @@ export function Footer() {
             <div style={{ display: 'flex', gap: 10, marginBottom: 16 }}>
               {SOCIALS.map((s) => {
                 const G = SocialGlyph[s.name];
-                return <a key={s.name} className="soc" href={s.url} target="_blank" rel="noopener noreferrer" aria-label={s.name} title={s.name} style={{ '--soc-c': s.color }}><G/></a>;
+                return <a key={s.name} className="soc" href={s.url} target="_blank" rel="noopener" aria-label={s.name} title={s.name} style={{ '--soc-c': s.color }}><G/></a>;
               })}
             </div>
             <p style={{ color: 'var(--muted)', fontSize: 13.5, margin: 0 }}>@cheffyscrystals · Cheffy's Crystals</p>

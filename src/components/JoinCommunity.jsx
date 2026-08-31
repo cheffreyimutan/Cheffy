@@ -70,7 +70,7 @@ const JoinCommunity = () => {
             <motion.a
               href="https://tarotcon.ph"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
               className="inline-block w-full bg-purple-600 text-white font-bold py-3 px-8 rounded-full text-center shadow-lg hover:bg-purple-700 transition-all"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -107,7 +107,7 @@ const JoinCommunity = () => {
             <motion.a
               href="https://www.facebook.com/share/g/1Cze2UffTn/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
               className="inline-block w-full border-2 border-purple-500 text-white font-bold py-3 px-8 rounded-full text-center hover:bg-purple-500 transition-all uppercase text-xs"
               whileHover={{ scale: 1.02, backgroundColor: 'rgba(147, 51, 234, 0.5)' }}
               whileTap={{ scale: 0.98 }}
