@@ -155,7 +155,9 @@ p { line-height: 1.65; }
 .card__media img { width: 100%; height: 100%; object-fit: cover; }
 .card__body { padding: 16px 17px 18px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
 .card__name { font-family: var(--display); font-weight: 700; font-size: 17px; color: var(--ink); letter-spacing: -.01em; }
-.card__intent { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-muted); }
+.card__intent { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-muted); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.card__stock-badge { color: var(--price); background: rgba(200,30,116,.1); padding: 2px 8px; border-radius: 999px; letter-spacing: .04em; }
+.card__trust { margin: 0; font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; color: var(--ink-muted); }
 
 .filter {
   font-family: var(--display); font-weight: 600; font-size: 13.5px;
@@ -179,6 +181,26 @@ p { line-height: 1.65; }
 .nav__link.active { color: #fff; }
 .icon-btn { width: 44px; height: 44px; border-radius: 999px; display: grid; place-items: center; color: var(--text); transition: background .18s; }
 .icon-btn:hover { background: rgba(255,255,255,.08); }
+
+.nav__mobile-toggle { display: none; }
+.nav__mobile-panel { display: none; }
+.nav__mobile-overlay {
+  position: fixed; inset: 0; background: rgba(6,3,13,.6); backdrop-filter: blur(2px);
+  z-index: 55;
+}
+@media (max-width: 860px) {
+  .nav__shop-btn { display: none; }
+  .nav__mobile-toggle { display: grid; }
+  .nav__mobile-panel {
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--void-2); border-bottom: 1px solid rgba(255,255,255,.08);
+    max-height: 0; overflow: hidden; z-index: 56;
+    transition: max-height .28s ease;
+  }
+  .nav__mobile-panel--open { max-height: 70vh; overflow-y: auto; }
+  .nav__mobile-links { display: flex; flex-direction: column; padding: 8px 28px 20px; }
+  .nav__mobile-links .nav__link { padding: 13px 0; font-size: 16px; border-bottom: 1px solid rgba(255,255,255,.06); }
+}
 .announce {
   background: linear-gradient(90deg, var(--royal-dim), var(--royal), var(--royal-dim));
   color: #fff; font-family: var(--mono); font-size: 12px; letter-spacing: .08em;

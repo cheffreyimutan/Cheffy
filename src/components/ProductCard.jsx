@@ -4,6 +4,7 @@ import { shopUrl } from '../data';
 
 export function ProductCard({ p }) {
   const tagColor = { Bestseller: 'var(--magenta)', New: 'var(--cyan)', Starter: 'var(--gold)' }[p.tag] || 'var(--magenta)';
+  const productUrl = p.handle ? `${shopUrl}products/${p.handle}` : shopUrl;
   return (
     <article className="card" itemScope itemType="https://schema.org/Product">
       <div className="card__media">
@@ -15,12 +16,16 @@ export function ProductCard({ p }) {
         )}
       </div>
       <div className="card__body">
-        <div className="card__intent">{p.intent} · {p.cat.replace(' & ', ' / ')}</div>
+        <div className="card__intent">
+          {p.intent} · {p.cat.replace(' & ', ' / ')}
+          {p.stock !== 'In stock' && <span className="card__stock-badge">{p.stock}</span>}
+        </div>
         <div className="card__name" itemProp="name">{p.name}</div>
         <p style={{ margin: 0, fontSize: 13.5, color: 'var(--ink-soft)', lineHeight: 1.5, minHeight: 40 }} itemProp="description">{p.blurb}</p>
         <meta itemProp="priceCurrency" content="PHP"/>
         <meta itemProp="price" content={p.price}/>
-        <a className="btn btn--ink btn--sm btn--block" href={shopUrl} target="_blank" rel="noopener noreferrer" style={{ marginTop: 'auto', textDecoration: 'none' }}>
+        <p className="card__trust">Ships nationwide · GCash, Maya &amp; cards accepted</p>
+        <a className="btn btn--ink btn--sm btn--block" href={productUrl} target="_blank" rel="noopener noreferrer" style={{ marginTop: 'auto', textDecoration: 'none' }}>
           Shop Now <Ic.arrow width="15" height="15"/>
         </a>
       </div>

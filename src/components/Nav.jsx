@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Ic, SocialGlyph, SOCIALS } from './Icons';
 import { shopUrl } from '../data';
@@ -18,7 +19,26 @@ function Announce() {
 
 export function Nav() {
   const { pathname } = useLocation();
+  const [open, setOpen] = useState(false);
   const is = (p) => pathname === p ? ' active' : '';
+
+  useEffect(() => { setOpen(false); }, [pathname]);
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
+
+  const navLinks = (
+    <>
+      <a className={'nav__link' + (pathname === '/' ? ' active' : '')} href={shopUrl} target="_blank" rel="noopener noreferrer">Shop</a>
+      <Link className={'nav__link' + is('/services')} to="/services">Services</Link>
+      <a className="nav__link" href="/#guide" onClick={() => setOpen(false)}>Crystal Guide</a>
+      <Link className={'nav__link' + is('/blog')} to="/blog">Blog</Link>
+      <Link className={'nav__link' + is('/about')} to="/about">Our Story</Link>
+      <a className="nav__link" href="/#reviews" onClick={() => setOpen(false)}>Reviews</a>
+      <Link className={'nav__link' + is('/community')} to="/community">Community</Link>
+    </>
+  );
 
   return (
     <>
@@ -27,19 +47,28 @@ export function Nav() {
         <div className="wrap nav__inner">
           <Wordmark/>
           <nav className="nav__links" aria-label="Main navigation">
-            <a className={'nav__link' + (pathname === '/' ? ' active' : '')} href={shopUrl} target="_blank" rel="noopener noreferrer">Shop</a>
-            <Link className={'nav__link' + is('/services')} to="/services">Services</Link>
-            <a className="nav__link" href="/#guide">Crystal Guide</a>
-            <Link className={'nav__link' + is('/blog')} to="/blog">Blog</Link>
-            <Link className={'nav__link' + is('/about')} to="/about">Our Story</Link>
-            <a className="nav__link" href="/#reviews">Reviews</a>
-            <Link className={'nav__link' + is('/community')} to="/community">Community</Link>
+            {navLinks}
           </nav>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <a className="btn btn--neon btn--sm" href={shopUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>Shop <Ic.arrow width="15" height="15"/></a>
+            <a className="btn btn--neon btn--sm nav__shop-btn" href={shopUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>Shop <Ic.arrow width="15" height="15"/></a>
+            <button
+              type="button"
+              className="nav__mobile-toggle icon-btn"
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-expanded={open}
+              onClick={() => setOpen((v) => !v)}
+            >
+              {open ? <Ic.x/> : <Ic.menu/>}
+            </button>
           </div>
         </div>
+        <div className={'nav__mobile-panel' + (open ? ' nav__mobile-panel--open' : '')}>
+          <nav className="nav__mobile-links" aria-label="Mobile navigation">
+            {navLinks}
+          </nav>
+        </div>
       </header>
+      {open && <div className="nav__mobile-overlay" onClick={() => setOpen(false)} aria-hidden="true"></div>}
     </>
   );
 }
