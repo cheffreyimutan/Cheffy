@@ -1,0 +1,71 @@
+{
+  "fetchedAt": "2026-08-31T22:06:17.326Z",
+  "products": {
+    "cheffy-amethyst-crystals-gemstones-sold-per-pack": {
+      "handle": "cheffy-amethyst-crystals-gemstones-sold-per-pack",
+      "price": 50,
+      "was": null,
+      "stock": "In stock"
+    },
+    "cheffy-clear-quartz-crystal-gemstone-tumbled": {
+      "handle": "cheffy-clear-quartz-crystal-gemstone-tumbled",
+      "price": 30,
+      "was": 65,
+      "stock": "In stock"
+    },
+    "cheffy-tigers-eye-tumbled-crystals-gemstones-l": {
+      "handle": "cheffy-tigers-eye-tumbled-crystals-gemstones-l",
+      "price": 100,
+      "was": null,
+      "stock": "In stock"
+    },
+    "cheffy-carnelian-crystal-tumbled-gemstone": {
+      "handle": "cheffy-carnelian-crystal-tumbled-gemstone",
+      "price": 50,
+      "was": 90,
+      "stock": "In stock"
+    },
+    "cheffy-lapis-lazuli-gemstone-crystals": {
+      "handle": "cheffy-lapis-lazuli-gemstone-crystals",
+      "price": 50,
+      "was": null,
+      "stock": "In stock"
+    },
+    "cheffy-smoky-quartz-natural-raw-points-medium-crystals": {
+      "handle": "cheffy-smoky-quartz-natural-raw-points-medium-crystals",
+      "price": 300,
+      "was": null,
+      "stock": "In stock"
+    },
+    "cheffy-black-tourmaline-crystals-gemstone-raw": {
+      "handle": "cheffy-black-tourmaline-crystals-gemstone-raw",
+      "price": 90,
+      "was": 200,
+      "stock": "Sold out"
+    },
+    "cheffy-citrine-points-raw-medium-h-q-crystal-gemstone": {
+      "handle": "cheffy-citrine-points-raw-medium-h-q-crystal-gemstone",
+      "price": 300,
+      "was": null,
+      "stock": "In stock"
+    },
+    "cheffy-blue-calcite-crystal-gemstone": {
+      "handle": "cheffy-blue-calcite-crystal-gemstone",
+      "price": 40,
+      "was": 70,
+      "stock": "In stock"
+    },
+    "cheffy-malachite-gravel-crystals-gemstones-sold-per-pack-5grms": {
+      "handle": "cheffy-malachite-gravel-crystals-gemstones-sold-per-pack-5grms",
+      "price": 50,
+      "was": null,
+      "stock": "In stock"
+    },
+    "cheffy-satin-spar-small-wands-crystal-gemstone-selenite-sticks": {
+      "handle": "cheffy-satin-spar-small-wands-crystal-gemstone-selenite-sticks",
+      "price": 50,
+      "was": null,
+      "stock": "In stock"
+    }
+  }
+}

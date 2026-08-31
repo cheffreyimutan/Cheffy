@@ -1,3 +1,5 @@
+import liveProducts from './generated/live-products.json' with { type: 'json' };
+
 export const shopUrl = "https://shop.cheffyscrystals.com/";
 
 export const categories = ["All", "Tumbled Stones", "Raw & Rough", "Points & Towers"];
@@ -49,6 +51,18 @@ export const products = [
     blurb:"Cleanses & recharges your other crystals — no water needed.", stock:"In stock", tag:null,
     handle:"cheffy-satin-spar-small-wands-crystal-gemstone-selenite-sticks" },
 ];
+
+// Prefer real, freshly-fetched Shopify price/stock over the static values above
+// (see scripts/fetch-shopify-prices.mjs) — falls back to the static values if a
+// handle wasn't fetched successfully, so this can never leave a card blank.
+for (const p of products) {
+  const live = p.handle && liveProducts.products?.[p.handle];
+  if (live) {
+    p.price = live.price;
+    p.was = live.was;
+    p.stock = live.stock;
+  }
+}
 
 export const guide = [
   { name:"Amethyst", intent:"Calm & Sleep", c1:"#9C6BD6", c2:"#5B2A9D",

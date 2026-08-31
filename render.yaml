@@ -2,7 +2,7 @@ services:
   - type: web
     name: cheffys-crystals
     env: static
-    buildCommand: npm install && npm run build
+    buildCommand: npm install && npm run fetch:shopify && npm run build && npm run prerender
     envVars:
       - key: NODE_VERSION
         value: 20
