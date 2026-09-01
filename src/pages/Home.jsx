@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { Nav, Footer } from '../components/Nav';
 import { ProductCard } from '../components/ProductCard';
 import { BlogCard } from '../components/BlogCard';
+import { EmailCapture } from '../components/EmailCapture';
 import { Ic, Spark, SocialGlyph } from '../components/Icons';
 import { GemGlyph } from '../components/GemGlyph';
 import { useReveal } from '../hooks/useReveal';
-import { products, categories, intents, guide, reviews, blogs, shopUrl } from '../data';
+import { products, categories, intents, guide, reviews, blogs, shopUrl, withUtm } from '../data';
 
 const SITE_URL = 'https://cheffyscrystals.com';
 
@@ -233,7 +234,7 @@ function Shop() {
             <h2 className="display-l" style={{ marginTop: 14, color: 'var(--ink)' }}>Find a little magic.</h2>
             <p style={{ color: 'var(--ink-soft)', maxWidth: 440, marginTop: 12, fontSize: 15.5 }}>Browse by what you need — calm, love, protection, abundance. Tap a stone to learn what it's for.</p>
           </div>
-          <a className="btn btn--gold btn--sm" href={shopUrl} target="_blank" rel="noopener" style={{ textDecoration: 'none', flexShrink: 0 }}>Shop the full store <Ic.arrow/></a>
+          <a className="btn btn--gold btn--sm" href={withUtm(shopUrl, 'homepage_shop_section')} target="_blank" rel="noopener" style={{ textDecoration: 'none', flexShrink: 0 }}>Shop the full store <Ic.arrow/></a>
         </div>
         <p style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink-muted)', marginTop: 12 }}>
           Browse a preview below — the complete catalogue &amp; secure checkout live on our official store. {list.length} of {products.length} shown.
@@ -342,7 +343,7 @@ function DeliveryBand() {
               Order straight from <b style={{ color: '#fff' }}>shop.cheffyscrystals.com</b> and your <b style={{ color: 'var(--cyan)' }}>10% direct discount</b> is applied automatically — it's always the best price you'll find. We hand-pack every parcel and ship nationwide via J&amp;T, Shopee &amp; TikTok.
             </p>
             <div style={{ display: 'flex', gap: 14, marginTop: 24, flexWrap: 'wrap', alignItems: 'center' }}>
-              <a className="btn btn--neon" href={shopUrl} target="_blank" rel="noopener">Buy direct &amp; save 10% <Ic.arrow/></a>
+              <a className="btn btn--neon" href={withUtm(shopUrl, 'homepage_delivery_band')} target="_blank" rel="noopener">Buy direct &amp; save 10% <Ic.arrow/></a>
               <span className="chip" style={{ background: 'rgba(52,227,255,.12)', color: 'var(--cyan)', boxShadow: 'inset 0 0 0 1px rgba(52,227,255,.3)' }}>
                 <Ic.pin width="14" height="14"/> Nationwide delivery
               </span>
@@ -469,6 +470,7 @@ export default function Home() {
         <Hero onShop={() => document.getElementById('shop')?.scrollIntoView({ behavior: 'smooth' })}/>
         <Shop/>
         <TrustBar/>
+        <EmailCapture/>
         <AsSeenTikTok/>
         <Guide/>
         <Reviews/>

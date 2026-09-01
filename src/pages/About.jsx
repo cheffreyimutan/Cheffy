@@ -4,7 +4,7 @@ import { Nav, Footer } from '../components/Nav';
 import { Ic, Spark, SocialGlyph, SOCIALS } from '../components/Icons';
 import { GemGlyph, hexA } from '../components/GemGlyph';
 import { useReveal } from '../hooks/useReveal';
-import { faq, shopUrl } from '../data';
+import { faq, shopUrl, withUtm } from '../data';
 import { useState } from 'react';
 
 const SITE_URL = 'https://cheffyscrystals.com';
@@ -266,7 +266,7 @@ function FindUs() {
           })}
         </div>
         <div style={{ textAlign: 'center' }}>
-          <a className="btn btn--neon" href={shopUrl} target="_blank" rel="noopener">Start shopping <Ic.arrow/></a>
+          <a className="btn btn--neon" href={withUtm(shopUrl, 'about_page_cta')} target="_blank" rel="noopener">Start shopping <Ic.arrow/></a>
         </div>
       </div>
     </section>

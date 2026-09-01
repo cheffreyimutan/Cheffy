@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Nav, Footer } from '../components/Nav';
 import { Ic, Spark } from '../components/Icons';
 import { useReveal } from '../hooks/useReveal';
-import { shopUrl } from '../data';
+import { shopUrl, withUtm } from '../data';
 
 const SITE_URL = 'https://cheffyscrystals.com';
 const FB_GROUP = 'https://www.facebook.com/groups/681461420992552';
@@ -72,7 +72,7 @@ export default function Community() {
             </p>
             <div style={{ display: 'flex', gap: 14, justifyContent: 'center', marginTop: 34, flexWrap: 'wrap' }}>
               <a className="btn btn--neon" href={FB_GROUP} target="_blank" rel="noopener">Join the group <Ic.arrow/></a>
-              <a className="btn btn--ghost" href={shopUrl} target="_blank" rel="noopener">Shop crystals</a>
+              <a className="btn btn--ghost" href={withUtm(shopUrl, 'community_page_cta')} target="_blank" rel="noopener">Shop crystals</a>
             </div>
           </div>
           <div className="hairline"></div>

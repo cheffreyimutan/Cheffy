@@ -4,7 +4,7 @@ import { Nav, Footer } from '../components/Nav';
 import { BlogCard } from '../components/BlogCard';
 import { Ic } from '../components/Icons';
 import { useReveal } from '../hooks/useReveal';
-import { blogs, shopUrl } from '../data';
+import { blogs, shopUrl, withUtm } from '../data';
 
 const SITE_URL = 'https://cheffyscrystals.com';
 const BLOG_CAT_COLOR = {
@@ -145,7 +145,7 @@ export default function BlogPost() {
                 <div className="script" style={{ fontSize: 28, color: 'var(--magenta-2)', lineHeight: 1 }}>Ready to start?</div>
                 <p style={{ margin: '6px 0 0', color: 'var(--ink-soft)', fontSize: 15 }}>Browse hand-checked, affordable crystals — from ₱20.</p>
               </div>
-              <a className="btn btn--neon" href={shopUrl} target="_blank" rel="noopener">Shop crystals <Ic.arrow/></a>
+              <a className="btn btn--neon" href={withUtm(shopUrl, 'blog_post_cta')} target="_blank" rel="noopener">Shop crystals <Ic.arrow/></a>
             </div>
           </div>
         </section>

@@ -2,6 +2,20 @@ import liveProducts from './generated/live-products.json' with { type: 'json' };
 
 export const shopUrl = "https://shop.cheffyscrystals.com/";
 
+// Tags an outbound link to the Shopify store so Shopify's own analytics can
+// tell which spot on this site actually drove the click — every link out
+// currently arrives as unattributed "direct" traffic without this.
+// `content` should identify the specific button/placement (e.g. "nav_shop",
+// "product_card_<handle>") so different spots can be told apart in reports.
+export function withUtm(url, content) {
+  const u = new URL(url);
+  u.searchParams.set('utm_source', 'cheffyscrystals_site');
+  u.searchParams.set('utm_medium', 'referral');
+  u.searchParams.set('utm_campaign', 'site_navigation');
+  if (content) u.searchParams.set('utm_content', content);
+  return u.toString();
+}
+
 export const categories = ["All", "Tumbled Stones", "Raw & Rough", "Points & Towers"];
 export const intents = ["All", "Calm", "Protection", "Abundance", "Clarity", "Grounding", "Confidence"];
 

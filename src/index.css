@@ -354,6 +354,57 @@ p { line-height: 1.65; }
   .tiktok-band__thumb { aspect-ratio: 16/10; max-height: 220px; }
 }
 
+/* EMAIL CAPTURE */
+.email-capture {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.email-capture__form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+.email-capture__form input[type="email"] {
+  min-width: 240px;
+  padding: 14px 18px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-family: var(--body);
+  font-size: 14.5px;
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.18);
+}
+.email-capture__form input[type="email"]::placeholder { color: var(--muted); }
+.email-capture__form input[type="email"]:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 1.5px var(--cyan);
+}
+.email-capture__success {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--cyan);
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: rgba(52, 227, 255, 0.1);
+  box-shadow: inset 0 0 0 1.5px rgba(52, 227, 255, 0.3);
+  max-width: 360px;
+}
+@media (max-width: 700px) {
+  .email-capture { flex-direction: column; align-items: stretch; text-align: center; }
+  .email-capture__form { justify-content: center; }
+  .email-capture__form input[type="email"] { flex: 1; min-width: 0; }
+  .email-capture__success { max-width: none; justify-content: center; }
+}
+
 /* EVENTS */
 @media (max-width: 700px){ .events-grid { grid-template-columns: 1fr !important; } }
 .event-card {

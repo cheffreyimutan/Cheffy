@@ -1,10 +1,11 @@
 import { Ic } from './Icons';
 import { GemMedia } from './GemGlyph';
-import { shopUrl } from '../data';
+import { shopUrl, withUtm } from '../data';
 
 export function ProductCard({ p }) {
   const tagColor = { Bestseller: 'var(--magenta)', New: 'var(--cyan)', Starter: 'var(--gold)' }[p.tag] || 'var(--magenta)';
-  const productUrl = p.handle ? `${shopUrl}products/${p.handle}` : shopUrl;
+  const rawProductUrl = p.handle ? `${shopUrl}products/${p.handle}` : shopUrl;
+  const productUrl = withUtm(rawProductUrl, `product_card_${p.handle || 'unknown'}`);
   return (
     <article className="card" itemScope itemType="https://schema.org/Product">
       <div className="card__media">
