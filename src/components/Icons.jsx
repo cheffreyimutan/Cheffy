@@ -29,10 +29,12 @@ export const SocialGlyph = {
   Shopee:    (p) => <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" {...p}><path d="M12 2.2c-2.3 0-4.1 1.9-4.2 4.2H4.7c-.5 0-.9.4-1 .9l-.8 12.1c0 1.2.9 2.2 2.1 2.3h13.9c1.2-.1 2.2-1.1 2.1-2.3l-.8-12.1c0-.5-.5-.9-1-.9h-3.1C16.1 4.1 14.3 2.2 12 2.2zm0 1.8c1.3 0 2.3 1 2.4 2.4H9.6C9.7 5 10.7 4 12 4zm-.3 6c1.9 0 3.2 1 3.2 2.6 0 1.4-1.1 2.2-2.5 2.6-1 .3-1.4.5-1.4.9 0 .4.4.6 1.1.6.7 0 1.4-.2 1.9-.5l.4 1.5c-.6.3-1.5.5-2.4.5-1.9 0-3.1-1-3.1-2.5 0-1.3 1-2.2 2.5-2.6 1-.3 1.4-.5 1.4-.9 0-.4-.4-.6-1.1-.6-.8 0-1.7.3-2.2.6l-.4-1.5c.6-.4 1.6-.7 2.7-.7z"/></svg>,
   TikTok:    (p) => <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" {...p}><path d="M16.6 5.8c-1-.7-1.7-1.7-1.9-3h-2.5v10.3c0 1.4-1.1 2.5-2.5 2.5s-2.5-1.1-2.5-2.5 1.1-2.5 2.5-2.5c.3 0 .5 0 .8.1V7.6c-.3 0-.5-.1-.8-.1-2.8 0-5 2.3-5 5s2.2 5 5 5 5-2.3 5-5V8.9c1 .7 2.2 1.1 3.5 1.1V7.5c-.7 0-1.4-.2-2.1-.6z"/></svg>,
   Instagram: (p) => <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.8" {...p}><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/></svg>,
+  Facebook:  (p) => <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" {...p}><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg>,
 };
 
 export const SOCIALS = [
   { name: 'Shopee',    color: '#EE4D2D', url: 'https://shopee.ph/cheffyyyy' },
   { name: 'TikTok',   color: '#25F4EE', url: 'https://tiktok.com/@cheffyscrystals' },
   { name: 'Instagram',color: '#FF2E9A', url: 'https://www.instagram.com/cheffyscrystals/' },
+  { name: 'Facebook', color: '#1877F2', url: 'https://www.facebook.com/cheffyyyy/' },
 ];

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Ic, SocialGlyph, SOCIALS } from './Icons';
-import { shopUrl, withUtm } from '../data';
+import { shopeeUrl, tiktokUrl, withUtm } from '../data';
 
 function Wordmark() {
   return (
@@ -13,7 +13,7 @@ function Wordmark() {
 
 function Announce() {
   return (
-    <div className="announce">✦ Buy direct &amp; save <b>10% OFF</b> · Nationwide delivery · Starting at <b>₱20</b> ✦</div>
+    <div className="announce">✦ Now on <b>Shopee</b> &amp; <b>TikTok Shop</b> · Nationwide delivery · Starting at <b>₱20</b> ✦</div>
   );
 }
 
@@ -30,7 +30,9 @@ export function Nav() {
 
   const navLinks = (
     <>
-      <a className={'nav__link' + (pathname === '/' ? ' active' : '')} href={withUtm(shopUrl, 'nav_shop')} target="_blank" rel="noopener">Shop</a>
+      <a className="nav__link" href={withUtm(shopeeUrl, 'nav_shopee')} target="_blank" rel="noopener">Shopee</a>
+      <a className="nav__link" href={withUtm(tiktokUrl, 'nav_tiktok')} target="_blank" rel="noopener">TikTok</a>
+      <a className="nav__link" href="/#visit-store" onClick={() => setOpen(false)}>Visit Us</a>
       <Link className={'nav__link' + is('/services')} to="/services">Services</Link>
       <a className="nav__link" href="/#guide" onClick={() => setOpen(false)}>Crystal Guide</a>
       <Link className={'nav__link' + is('/blog')} to="/blog">Blog</Link>
@@ -50,7 +52,8 @@ export function Nav() {
             {navLinks}
           </nav>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <a className="btn btn--neon btn--sm nav__shop-btn" href={withUtm(shopUrl, 'nav_shop_button')} target="_blank" rel="noopener" style={{ textDecoration: 'none' }}>Shop <Ic.arrow width="15" height="15"/></a>
+            <a className="btn btn--neon btn--sm nav__shop-btn" href={withUtm(shopeeUrl, 'nav_shop_button_shopee')} target="_blank" rel="noopener" style={{ textDecoration: 'none', gap: 6 }}><SocialGlyph.Shopee width="14" height="14"/> Shopee</a>
+            <a className="btn btn--ghost btn--sm nav__shop-btn nav__shop-btn--secondary" href={withUtm(tiktokUrl, 'nav_shop_button_tiktok')} target="_blank" rel="noopener" style={{ textDecoration: 'none', gap: 6 }}><SocialGlyph.TikTok width="14" height="14"/> TikTok</a>
             <button
               type="button"
               className="nav__mobile-toggle icon-btn"
@@ -91,7 +94,8 @@ export function Footer() {
           <div>
             <div className="eyebrow" style={{ marginBottom: 16 }}>Explore</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <a className="foot-link" href={withUtm(shopUrl, 'footer_shop')} target="_blank" rel="noopener">Shop</a>
+              <a className="foot-link" href={withUtm(shopeeUrl, 'footer_shopee')} target="_blank" rel="noopener">Shop on Shopee</a>
+              <a className="foot-link" href={withUtm(tiktokUrl, 'footer_tiktok')} target="_blank" rel="noopener">Shop on TikTok</a>
               <a className="foot-link" href="/#guide">Crystal Guide</a>
               <Link className="foot-link" to="/blog">Blog</Link>
               <Link className="foot-link" to="/about">Our Story</Link>

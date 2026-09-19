@@ -1,11 +1,11 @@
 import { Ic } from './Icons';
 import { GemMedia } from './GemGlyph';
-import { shopUrl, withUtm } from '../data';
+import { shopeeUrl, withUtm } from '../data';
 
 export function ProductCard({ p }) {
   const tagColor = { Bestseller: 'var(--magenta)', New: 'var(--cyan)', Starter: 'var(--gold)' }[p.tag] || 'var(--magenta)';
-  const rawProductUrl = p.handle ? `${shopUrl}products/${p.handle}` : shopUrl;
-  const productUrl = withUtm(rawProductUrl, `product_card_${p.handle || 'unknown'}`);
+  const rawUrl = p.shopeePath ? `https://shopee.ph/${p.shopeePath}` : shopeeUrl;
+  const productUrl = withUtm(rawUrl, `product_card_${p.id}`);
   return (
     <article className="card" itemScope itemType="https://schema.org/Product">
       <div className="card__media">
@@ -23,11 +23,11 @@ export function ProductCard({ p }) {
         </div>
         <div className="card__name" itemProp="name">{p.name}</div>
         <p style={{ margin: 0, fontSize: 13.5, color: 'var(--ink-soft)', lineHeight: 1.5, minHeight: 40 }} itemProp="description">{p.blurb}</p>
-        <meta itemProp="priceCurrency" content="PHP"/>
-        <meta itemProp="price" content={p.price}/>
-        <p className="card__trust">Ships nationwide · GCash, Maya &amp; cards accepted</p>
-        <a className="btn btn--ink btn--sm btn--block" href={productUrl} target="_blank" rel="noopener" style={{ marginTop: 'auto', textDecoration: 'none' }}>
-          Shop Now <Ic.arrow width="15" height="15"/>
+        {p.price != null && <meta itemProp="priceCurrency" content="PHP"/>}
+        {p.price != null && <meta itemProp="price" content={p.price}/>}
+        <p className="card__trust">Ships nationwide · secure checkout on Shopee</p>
+        <a className="btn btn--neon btn--sm btn--block" href={productUrl} target="_blank" rel="noopener" style={{ marginTop: 'auto', textDecoration: 'none' }}>
+          Shop on Shopee <Ic.arrow width="15" height="15"/>
         </a>
       </div>
     </article>

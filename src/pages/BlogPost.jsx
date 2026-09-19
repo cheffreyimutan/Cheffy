@@ -4,7 +4,7 @@ import { Nav, Footer } from '../components/Nav';
 import { BlogCard } from '../components/BlogCard';
 import { Ic } from '../components/Icons';
 import { useReveal } from '../hooks/useReveal';
-import { blogs, shopUrl, withUtm } from '../data';
+import { blogs, shopeeUrl, tiktokUrl, withUtm } from '../data';
 
 const SITE_URL = 'https://cheffyscrystals.com';
 const BLOG_CAT_COLOR = {
@@ -120,7 +120,7 @@ export default function BlogPost() {
         <div className="bg-cosmic" style={{ paddingBottom: 0 }}>
           <div className="wrap" style={{ maxWidth: 980 }}>
             <div className="post-cover">
-              <img src={b.img} alt={b.title}/>
+              <img src={b.img} alt={b.imgAlt || b.title}/>
             </div>
           </div>
         </div>
@@ -145,7 +145,10 @@ export default function BlogPost() {
                 <div className="script" style={{ fontSize: 28, color: 'var(--magenta-2)', lineHeight: 1 }}>Ready to start?</div>
                 <p style={{ margin: '6px 0 0', color: 'var(--ink-soft)', fontSize: 15 }}>Browse hand-checked, affordable crystals — from ₱20.</p>
               </div>
-              <a className="btn btn--neon" href={withUtm(shopUrl, 'blog_post_cta')} target="_blank" rel="noopener">Shop crystals <Ic.arrow/></a>
+              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                <a className="btn btn--neon" href={withUtm(shopeeUrl, 'blog_post_cta_shopee')} target="_blank" rel="noopener">Shop on Shopee <Ic.arrow/></a>
+                <a className="btn btn--ghost" href={withUtm(tiktokUrl, 'blog_post_cta_tiktok')} target="_blank" rel="noopener">Shop on TikTok <Ic.arrow/></a>
+              </div>
             </div>
           </div>
         </section>

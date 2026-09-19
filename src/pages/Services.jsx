@@ -16,7 +16,7 @@ function SEOMeta() {
     set('meta[property="og:url"]',         'content', pageUrl);
     set('meta[property="og:title"]',       'content', "Services — Cheffy's Crystals | Crystal Consultations & Corporate Wellness");
     set('meta[property="og:description"]', 'content', "1:1 crystal consultations, rune readings, chakra healing, and corporate wellness workshops by Cheffy — featured speaker at Tarot Con 2025.");
-    set('meta[property="og:image"]',       'content', `${SITE_URL}/assets/tarot-con-2025.png`);
+    set('meta[property="og:image"]',       'content', `${SITE_URL}/assets/tarot-con-2025.jpg`);
     const schema = {
       "@context": "https://schema.org",
       "@graph": [
@@ -211,10 +211,10 @@ export default function Services() {
             <p className="eyebrow" style={{ textAlign: 'center', marginBottom: 28 }}>✦ As seen & featured at</p>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, maxWidth: 860, margin: '0 auto' }} className="hero-grid">
               <div style={{ borderRadius: 'var(--r-xl)', overflow: 'hidden', aspectRatio: '16/9', boxShadow: 'var(--shadow-card)' }}>
-                <img src="/assets/tarot-con-2025.png" alt="Cheffy's Crystals — Featured Speaker at Tarot Con 2025" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}/>
+                <img src="/assets/tarot-con-2025.jpg" alt="Cheffy's Crystals — Featured Speaker at Tarot Con 2025" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}/>
               </div>
               <div style={{ borderRadius: 'var(--r-xl)', overflow: 'hidden', aspectRatio: '16/9', boxShadow: 'var(--shadow-card)' }}>
-                <img src="/assets/cheffy-speaking.png" alt="Cheffy speaking on stage as Founder of Cheffy's Crystals" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 70%' }}/>
+                <img src="/assets/cheffy-speaking.jpg" alt="Cheffy speaking on stage as Founder of Cheffy's Crystals" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 70%' }}/>
               </div>
             </div>
           </div>

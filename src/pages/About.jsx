@@ -4,7 +4,7 @@ import { Nav, Footer } from '../components/Nav';
 import { Ic, Spark, SocialGlyph, SOCIALS } from '../components/Icons';
 import { GemGlyph, hexA } from '../components/GemGlyph';
 import { useReveal } from '../hooks/useReveal';
-import { faq, shopUrl, withUtm } from '../data';
+import { faq, shopeeUrl, tiktokUrl, withUtm } from '../data';
 import { useState } from 'react';
 
 const SITE_URL = 'https://cheffyscrystals.com';
@@ -109,7 +109,7 @@ function StoryBody() {
                 <span style={{ fontFamily: 'var(--mono)', fontSize: 13, color: 'var(--ink-muted)' }}>{b.n}</span>
               </div>
               <div>
-                <h3 className="display-m" style={{ color: 'var(--ink)', fontSize: 'clamp(22px,2.6vw,32px)' }}>{b.t}</h3>
+                <h2 className="display-m" style={{ color: 'var(--ink)', fontSize: 'clamp(22px,2.6vw,32px)' }}>{b.t}</h2>
                 <p style={{ color: 'var(--ink-soft)', marginTop: 10, fontSize: 16, lineHeight: 1.7, maxWidth: 680 }}>{b.text}</p>
               </div>
             </div>
@@ -149,7 +149,7 @@ function PhotoGallery() {
 function Values() {
   const vals = [
     { icon: <Ic.shield/>, t: 'Authentic & honest',  d: "We're upfront about what's natural, dyed or reconstituted. No mystical markups, no half-truths." },
-    { icon: <Ic.sparkles/>, t: 'Affordable for all', d: "Chips from ₱20 and a 10% direct-shop discount. Good energy shouldn't be a luxury." },
+    { icon: <Ic.sparkles/>, t: 'Affordable for all', d: "Chips from ₱20 on Shopee & TikTok Shop. Good energy shouldn't be a luxury." },
     { icon: <Ic.heart/>, t: 'Sourced with love',    d: 'Every piece is chosen, cleansed and hand-checked by Cheffy before it ever ships to you.' },
     { icon: <Ic.leaf/>, t: 'Personal service',       d: "Message us anytime — we'll help you pick the right stone for whatever you're carrying." },
   ];
@@ -240,10 +240,11 @@ function FAQ() {
 
 function FindUs() {
   const socials = [
-    { s: 'Shopee',    h: 'Cheffy\'s Crystals', c: '#EE4D2D', url: 'https://shopee.ph/cheffyscrystals' },
+    { s: 'Shopee',    h: 'Cheffy\'s Crystals', c: '#EE4D2D', url: 'https://shopee.ph/cheffyyyy' },
     { s: 'TikTok',   h: '@cheffyscrystals',    c: '#25F4EE', url: 'https://tiktok.com/@cheffyscrystals' },
     { s: 'Instagram', h: '@cheffyscrystals',   c: '#FF2E9A', url: 'https://instagram.com/cheffyscrystals' },
   ];
+  const lunarSoulUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent('LunarSoul PH, 3F 5650 Don Pedro, Poblacion, Makati');
   return (
     <section className="bg-cosmic section" style={{ position: 'relative', overflow: 'hidden' }}>
       <div className="nebula"></div>
@@ -251,9 +252,9 @@ function FindUs() {
         <div style={{ textAlign: 'center', maxWidth: 560, margin: '0 auto 40px' }}>
           <p className="eyebrow--magenta eyebrow">✦ Checkout &amp; follow</p>
           <h2 className="display-l" style={{ marginTop: 14 }}>Find us wherever you shop.</h2>
-          <p style={{ color: 'var(--muted)', marginTop: 12, fontSize: 15.5 }}>Buy direct for 10% off, or catch us on your favourite platform. We answer every message.</p>
+          <p style={{ color: 'var(--muted)', marginTop: 12, fontSize: 15.5 }}>Order securely on Shopee or TikTok Shop, catch us on your favourite platform, or see the collection in person at LunarSoul PH in Makati. We answer every message.</p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 16, marginBottom: 40 }} className="reviews-grid">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginBottom: 40 }} className="reviews-grid">
           {socials.map((x, i) => {
             const G = SocialGlyph[x.s];
             return (
@@ -264,9 +265,15 @@ function FindUs() {
               </a>
             );
           })}
+          <a href={lunarSoulUrl} target="_blank" rel="noopener" className="review-card reveal" style={{ alignItems: 'flex-start', cursor: 'pointer' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 9, color: 'var(--price)' }}><Ic.pin width="16" height="16"/><span style={{ fontFamily: 'var(--mono)', fontWeight: 700, fontSize: 13, letterSpacing: '.1em' }}>IN PERSON</span></span>
+            <div style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 17, color: '#fff' }}>LunarSoul PH, Makati</div>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'var(--muted)', fontSize: 13, marginTop: 'auto' }}>Get directions <Ic.arrow width="15" height="15"/></span>
+          </a>
         </div>
-        <div style={{ textAlign: 'center' }}>
-          <a className="btn btn--neon" href={withUtm(shopUrl, 'about_page_cta')} target="_blank" rel="noopener">Start shopping <Ic.arrow/></a>
+        <div style={{ textAlign: 'center', display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <a className="btn btn--neon" href={withUtm(shopeeUrl, 'about_page_cta_shopee')} target="_blank" rel="noopener">Shop on Shopee <Ic.arrow/></a>
+          <a className="btn btn--ghost" href={withUtm(tiktokUrl, 'about_page_cta_tiktok')} target="_blank" rel="noopener">Shop on TikTok <Ic.arrow/></a>
         </div>
       </div>
     </section>

@@ -9,17 +9,26 @@ const SITE_URL = 'https://cheffyscrystals.com';
 
 function SEOMeta() {
   useEffect(() => {
+    const pageUrl = `${SITE_URL}/blog`;
+    const description = "Honest, beginner-friendly crystal guides written for real Filipino homes. Learn how to use, cleanse, and choose healing crystals. Written by Cheffy.";
+    const set = (sel, attr, val) => document.querySelector(sel)?.setAttribute(attr, val);
     document.title = "Crystal Journal — Cheffy's Crystals | Beginner Guides, Care Tips & More";
-    document.querySelector('meta[name="description"]')?.setAttribute('content',
-      "Honest, beginner-friendly crystal guides written for real Filipino homes. Learn how to use, cleanse, and choose healing crystals. Written by Cheffy."
-    );
+    set('meta[name="description"]', 'content', description);
+    set('link[rel="canonical"]', 'href', pageUrl);
+    set('meta[property="og:url"]', 'content', pageUrl);
+    set('meta[property="og:title"]', 'content', "Crystal Journal — Cheffy's Crystals");
+    set('meta[property="og:description"]', 'content', description);
+    set('meta[property="og:image"]', 'content', `${SITE_URL}/assets/display-table.jpg`);
+    set('meta[name="twitter:title"]', 'content', "Crystal Journal — Cheffy's Crystals");
+    set('meta[name="twitter:description"]', 'content', description);
+    set('meta[name="twitter:image"]', 'content', `${SITE_URL}/assets/display-table.jpg`);
 
     const schema = {
       "@context": "https://schema.org",
       "@type": "Blog",
       "name": "The Cheffy's Journal",
       "description": "Honest, beginner-friendly guides on healing crystals for Filipinos",
-      "url": `${SITE_URL}/blog`,
+      "url": pageUrl,
       "publisher": { "@type": "Organization", "name": "Cheffy's Crystals", "url": SITE_URL },
       "blogPost": blogs.map((b) => ({
         "@type": "BlogPosting",
@@ -27,7 +36,7 @@ function SEOMeta() {
         "description": b.excerpt,
         "image": `${SITE_URL}${b.img}`,
         "url": `${SITE_URL}/blog/${b.slug}`,
-        "datePublished": b.date,
+        "datePublished": b.isoDate,
         "author": { "@type": "Person", "name": "Cheffy" },
         "publisher": { "@type": "Organization", "name": "Cheffy's Crystals" },
         "articleSection": b.cat,

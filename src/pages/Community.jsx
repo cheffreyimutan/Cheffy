@@ -2,24 +2,33 @@ import { useEffect } from 'react';
 import { Nav, Footer } from '../components/Nav';
 import { Ic, Spark } from '../components/Icons';
 import { useReveal } from '../hooks/useReveal';
-import { shopUrl, withUtm } from '../data';
+import { shopeeUrl, tiktokUrl, withUtm } from '../data';
 
 const SITE_URL = 'https://cheffyscrystals.com';
 const FB_GROUP = 'https://www.facebook.com/groups/681461420992552';
 
 function SEOMeta() {
   useEffect(() => {
+    const pageUrl = `${SITE_URL}/community`;
+    const description = "Join the Cheffy's Crystals Facebook community — a warm space for Filipino crystal lovers. Get first dibs on restocks, ask Cheffy anything, and join exclusive giveaways.";
+    const set = (sel, attr, val) => document.querySelector(sel)?.setAttribute(attr, val);
     document.title = "Community — Cheffy's Crystals | Join the Filipino Crystal Lovers Group";
-    document.querySelector('meta[name="description"]')?.setAttribute('content',
-      "Join the Cheffy's Crystals Facebook community — a warm space for Filipino crystal lovers. Get first dibs on restocks, ask Cheffy anything, and join exclusive giveaways."
-    );
+    set('meta[name="description"]', 'content', description);
+    set('link[rel="canonical"]', 'href', pageUrl);
+    set('meta[property="og:url"]', 'content', pageUrl);
+    set('meta[property="og:title"]', 'content', "Community — Cheffy's Crystals");
+    set('meta[property="og:description"]', 'content', description);
+    set('meta[property="og:image"]', 'content', `${SITE_URL}/assets/cheffy-booth.jpg`);
+    set('meta[name="twitter:title"]', 'content', "Community — Cheffy's Crystals");
+    set('meta[name="twitter:description"]', 'content', description);
+    set('meta[name="twitter:image"]', 'content', `${SITE_URL}/assets/cheffy-booth.jpg`);
 
     const schema = {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Cheffy's Crystals Community",
       "description": "A Facebook community for Filipino crystal lovers — beginners and collectors alike.",
-      "url": `${SITE_URL}/community`,
+      "url": pageUrl,
       "mainEntity": {
         "@type": "OnlineBusiness",
         "name": "Cheffy's Crystals Community",
@@ -72,7 +81,8 @@ export default function Community() {
             </p>
             <div style={{ display: 'flex', gap: 14, justifyContent: 'center', marginTop: 34, flexWrap: 'wrap' }}>
               <a className="btn btn--neon" href={FB_GROUP} target="_blank" rel="noopener">Join the group <Ic.arrow/></a>
-              <a className="btn btn--ghost" href={withUtm(shopUrl, 'community_page_cta')} target="_blank" rel="noopener">Shop crystals</a>
+              <a className="btn btn--ghost" href={withUtm(shopeeUrl, 'community_page_cta_shopee')} target="_blank" rel="noopener">Shop on Shopee</a>
+              <a className="btn btn--ghost" href={withUtm(tiktokUrl, 'community_page_cta_tiktok')} target="_blank" rel="noopener">Shop on TikTok</a>
             </div>
           </div>
           <div className="hairline"></div>

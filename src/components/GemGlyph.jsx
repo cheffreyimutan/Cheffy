@@ -31,7 +31,7 @@ export function GemGlyph({ c1, c2, size = '62%', glow = true }) {
 }
 
 export function GemMedia({ p }) {
-  if (p.img) return <img src={p.img} alt={p.name} loading="lazy"/>;
+  if (p.img) return <img src={p.img} alt={`${p.name} — ${p.blurb}`} loading="lazy"/>;
   return (
     <div style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center',
       background: `radial-gradient(120% 120% at 50% 18%, ${hexA(p.c1,.30)}, ${hexA(p.c2,.14)} 60%, #fff 100%)` }}>

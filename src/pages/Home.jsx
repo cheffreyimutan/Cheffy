@@ -7,16 +7,24 @@ import { EmailCapture } from '../components/EmailCapture';
 import { Ic, Spark, SocialGlyph } from '../components/Icons';
 import { GemGlyph } from '../components/GemGlyph';
 import { useReveal } from '../hooks/useReveal';
-import { products, categories, intents, guide, reviews, blogs, shopUrl, withUtm } from '../data';
+import { products, categories, intents, guide, reviews, blogs, shopeeUrl, tiktokUrl, withUtm } from '../data';
 
 const SITE_URL = 'https://cheffyscrystals.com';
 
 function SEOMeta() {
   useEffect(() => {
+    const set = (sel, attr, val) => document.querySelector(sel)?.setAttribute(attr, val);
+    const description = "Shop authentic healing crystals in the Philippines starting at ₱20. Hand-checked by Cheffy, shipped nationwide to Manila, Cebu, Davao and beyond. 4.9★ across Shopee & TikTok. 80k+ pieces sold. Order on Shopee or TikTok Shop, or visit us in person at LunarSoul PH in Makati.";
     document.title = "Cheffy's Crystals — Authentic Healing Crystals Philippines | From ₱20";
-    document.querySelector('meta[name="description"]')?.setAttribute('content',
-      "Shop authentic healing crystals in the Philippines starting at ₱20. Hand-checked by Cheffy, shipped nationwide to Manila, Cebu, Davao and beyond. 4.9★ across Shopee & TikTok. 80k+ pieces sold. Buy direct and save 10%."
-    );
+    set('meta[name="description"]', 'content', description);
+    set('link[rel="canonical"]', 'href', SITE_URL);
+    set('meta[property="og:url"]', 'content', SITE_URL);
+    set('meta[property="og:title"]', 'content', "Cheffy's Crystals — Authentic Healing Crystals Philippines");
+    set('meta[property="og:description"]', 'content', description);
+    set('meta[property="og:image"]', 'content', `${SITE_URL}/assets/display-table.jpg`);
+    set('meta[name="twitter:title"]', 'content', "Cheffy's Crystals — Authentic Healing Crystals Philippines");
+    set('meta[name="twitter:description"]', 'content', description);
+    set('meta[name="twitter:image"]', 'content', `${SITE_URL}/assets/display-table.jpg`);
 
     // JSON-LD structured data
     const schema = {
@@ -35,14 +43,15 @@ function SEOMeta() {
           "areaServed": { "@type": "Country", "name": "Philippines" },
           "sameAs": [
             "https://shopee.ph/cheffyyyy",
-            "https://tiktok.com/@cheffyscrystals",
-            "https://www.instagram.com/cheffyscrystals/"
+            "https://www.tiktok.com/@cheffyscrystals",
+            "https://www.instagram.com/cheffyscrystals/",
+            "https://www.facebook.com/cheffyyyy/"
           ],
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "customer service",
-            "availableLanguage": ["English", "Filipino"]
-          }
+          "telephone": "+639258865615",
+          "contactPoint": [
+            { "@type": "ContactPoint", "contactType": "customer service", "telephone": "+639258865615", "availableLanguage": ["English", "Filipino"] },
+            { "@type": "ContactPoint", "contactType": "customer service", "telephone": "+639927859457", "availableLanguage": ["English", "Filipino"] }
+          ]
         },
         {
           "@type": "WebSite",
@@ -63,16 +72,19 @@ function SEOMeta() {
               "name": p.name,
               "description": p.blurb,
               "image": `${SITE_URL}${p.img}`,
-              "offers": {
-                "@type": "Offer",
-                "price": p.price,
-                "priceCurrency": "PHP",
-                "availability": p.stock === 'In stock'
-                  ? "https://schema.org/InStock"
-                  : "https://schema.org/LimitedAvailability",
-                "url": shopUrl,
-                "seller": { "@id": `${SITE_URL}/#organization` }
-              }
+              ...(p.price != null ? {
+                "offers": {
+                  "@type": "Offer",
+                  "price": p.price,
+                  "priceCurrency": "PHP",
+                  "availability": p.stock === 'In stock'
+                    ? "https://schema.org/InStock"
+                    : "https://schema.org/LimitedAvailability",
+                  "url": p.shopeePath ? `https://shopee.ph/${p.shopeePath}` : shopeeUrl,
+                  "seller": { "@id": `${SITE_URL}/#organization` },
+                  "availableAtOrFrom": { "@id": `${SITE_URL}/#lunarsoul-store` }
+                }
+              } : {})
             }
           }))
         },
@@ -80,7 +92,7 @@ function SEOMeta() {
           "@type": "LocalBusiness",
           "@id": `${SITE_URL}/#localbusiness`,
           "name": "Cheffy's Crystals",
-          "description": "Online crystal shop serving all of the Philippines. Also appears at bazaars and markets in Metro Manila and Cavite.",
+          "description": "Online crystal shop serving all of the Philippines, shipped via Shopee and TikTok Shop. Also appears at bazaars and markets in Metro Manila and Cavite, and carried in person at LunarSoul PH in Makati.",
           "url": SITE_URL,
           "image": `${SITE_URL}/assets/cheffy-booth-neon.jpg`,
           "priceRange": "₱20–₱500",
@@ -97,6 +109,30 @@ function SEOMeta() {
             "reviewCount": "2400",
             "bestRating": "5",
             "worstRating": "1"
+          }
+        },
+        {
+          "@type": "Store",
+          "@id": `${SITE_URL}/#lunarsoul-store`,
+          "name": "LunarSoul PH",
+          "description": "Retail partner in Makati that carries Cheffy's Crystals' collection in person — a separate business from Cheffy's Crystals itself.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "3F 5650 Don Pedro, Poblacion",
+            "addressLocality": "Makati",
+            "addressRegion": "Metro Manila",
+            "addressCountry": "PH"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 14.5641811,
+            "longitude": 121.0316392
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "13:00",
+            "closes": "22:00"
           }
         }
       ]
@@ -146,7 +182,7 @@ function Hero({ onShop }) {
 
           <div style={{ position: 'relative' }} className="hero-media-anim">
             <div style={{ position: 'relative', borderRadius: 'var(--r-xl)', overflow: 'hidden', boxShadow: '0 40px 90px -30px rgba(91,42,157,.7)', aspectRatio: '4/5' }}>
-              <img src="/assets/display-table.jpg" alt="Cheffy's Crystals display table full of tumbled stones in wooden bowls at a Philippine bazaar" style={{ width: '100%', height: '100%', objectFit: 'cover' }}/>
+              <img src="/assets/display-table.jpg" alt="Cheffy's Crystals display table full of tumbled stones in wooden bowls at a Philippine bazaar" fetchPriority="high" loading="eager" style={{ width: '100%', height: '100%', objectFit: 'cover' }}/>
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,transparent 50%,rgba(12,6,23,.55))' }}></div>
               <div style={{ position: 'absolute', left: 18, bottom: 18, right: 18, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 10 }}>
                 <span className="badge-glow">✦ Soulstice, 2024</span>
@@ -197,17 +233,18 @@ function TrustBar() {
     { icon: <Ic.shield/>, t: 'Hand-checked authentic', d: 'Every piece vetted by Cheffy before it ships.' },
     { icon: <Ic.truck/>,  t: 'Nationwide delivery',   d: 'Manila, Cebu, Davao & everywhere between.' },
     { icon: <Ic.sparkles/>, t: 'Starts at ₱20',       d: 'A real collection on any budget.' },
-    { icon: <Ic.heart/>,  t: '10% off direct',        d: 'Buy from our official store and save.' },
+    { icon: <Ic.heart/>,  t: 'Shopee & TikTok Shop',  d: 'Secure checkout, buyer protection built in.' },
   ];
   return (
     <section className="bg-cosmic section--tight" style={{ paddingTop: 0 }}>
       <div className="wrap">
+        <h2 style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0,0,0,0)' }}>Why shop with Cheffy's Crystals</h2>
         <div className="trust-bar reveal">
           {items.map((it, i) => (
             <div key={i}>
               <span style={{ color: 'var(--gold)', flexShrink: 0 }}>{it.icon}</span>
               <div>
-                <div style={{ fontFamily: 'var(--display)', fontWeight: 600, fontSize: 15, color: '#fff', marginBottom: 3 }}>{it.t}</div>
+                <h3 style={{ fontFamily: 'var(--display)', fontWeight: 600, fontSize: 15, color: '#fff', marginBottom: 3, marginTop: 0 }}>{it.t}</h3>
                 <div style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.45 }}>{it.d}</div>
               </div>
             </div>
@@ -234,10 +271,13 @@ function Shop() {
             <h2 className="display-l" style={{ marginTop: 14, color: 'var(--ink)' }}>Find a little magic.</h2>
             <p style={{ color: 'var(--ink-soft)', maxWidth: 440, marginTop: 12, fontSize: 15.5 }}>Browse by what you need — calm, love, protection, abundance. Tap a stone to learn what it's for.</p>
           </div>
-          <a className="btn btn--gold btn--sm" href={withUtm(shopUrl, 'homepage_shop_section')} target="_blank" rel="noopener" style={{ textDecoration: 'none', flexShrink: 0 }}>Shop the full store <Ic.arrow/></a>
+          <div style={{ display: 'flex', gap: 10, flexShrink: 0 }}>
+            <a className="btn btn--neon" href={withUtm(shopeeUrl, 'homepage_shop_section_shopee')} target="_blank" rel="noopener" style={{ textDecoration: 'none' }}>Shop on Shopee <Ic.arrow/></a>
+            <a className="btn btn--gold" href={withUtm(tiktokUrl, 'homepage_shop_section_tiktok')} target="_blank" rel="noopener" style={{ textDecoration: 'none' }}>Shop on TikTok <Ic.arrow/></a>
+          </div>
         </div>
         <p style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink-muted)', marginTop: 12 }}>
-          Browse a preview below — the complete catalogue &amp; secure checkout live on our official store. {list.length} of {products.length} shown.
+          Browse a preview below — the complete catalogue &amp; secure checkout live on Shopee and TikTok Shop. {list.length} of {products.length} shown.
         </p>
         <div style={{ display: 'flex', gap: 9, flexWrap: 'wrap', marginTop: 26 }}>
           {categories.map((c) => <button key={c} className={'filter' + (cat === c ? ' active' : '')} onClick={() => setCat(c)}>{c}</button>)}
@@ -251,6 +291,11 @@ function Shop() {
         <div className="grid-products" style={{ marginTop: 32 }}>
           {list.map((p) => <ProductCard key={p.id} p={p}/>)}
         </div>
+        {list.length > 0 && (
+          <div style={{ textAlign: 'center', marginTop: 36 }}>
+            <a className="btn btn--neon" href={withUtm(shopeeUrl, 'homepage_shop_view_more')} target="_blank" rel="noopener" style={{ textDecoration: 'none' }}>View more on Shopee <Ic.arrow/></a>
+          </div>
+        )}
         {list.length === 0 && (
           <div style={{ textAlign: 'center', padding: '60px 0', color: 'var(--ink-muted)' }}>
             <p style={{ fontFamily: 'var(--display)', fontWeight: 600, color: 'var(--ink)' }}>No crystals match yet</p>
@@ -280,48 +325,11 @@ function Guide() {
                   <GemGlyph c1={g.c1} c2={g.c2} size="68%"/>
                 </div>
                 <div>
-                  <div style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 18, color: 'var(--ink)' }}>{g.name}</div>
+                  <h3 style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 18, color: 'var(--ink)', margin: 0 }}>{g.name}</h3>
                   <div className="card__intent" style={{ color: 'var(--price)' }}>{g.intent}</div>
                 </div>
               </div>
               <p style={{ margin: 0, color: 'var(--ink-soft)', fontSize: 14.5, lineHeight: 1.6 }}>{g.text}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Events() {
-  // No confirmed upcoming bazaars right now — add future dates here as they're booked.
-  const events = [];
-  if (events.length === 0) return null;
-  return (
-    <section id="events" className="bg-aura section">
-      <div className="wrap">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 20, flexWrap: 'wrap', marginBottom: 34 }}>
-          <div>
-            <p className="eyebrow" style={{ color: 'var(--price)' }}>✦ Catch us in person</p>
-            <h2 className="display-l" style={{ marginTop: 14, color: 'var(--ink)' }}>Events &amp; bazaars.</h2>
-            <p style={{ color: 'var(--ink-soft)', maxWidth: 460, marginTop: 12, fontSize: 15.5 }}>We're online first, but we love meeting our community face to face. Come say hi and shop the collection in person.</p>
-          </div>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 20 }} className="events-grid">
-          {events.map((e, i) => (
-            <div key={i} className="event-card reveal">
-              <div className="event-card__date">
-                <span className="event-card__mo">{e.mo}</span>
-                <span className="event-card__day">{e.day}</span>
-                <span className="event-card__yr">{e.year}</span>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                <h3 style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 22, color: 'var(--ink)', letterSpacing: '-.01em' }}>{e.name}</h3>
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'var(--ink-soft)', fontSize: 14.5 }}>
-                  <span style={{ color: 'var(--price)' }}><Ic.pin width="16" height="16"/></span>{e.venue}
-                </span>
-                <span className="chip" style={{ alignSelf: 'flex-start', marginTop: 4, background: 'var(--cream-2)', color: 'var(--ink-soft)' }}>Free entry · come say hi</span>
-              </div>
             </div>
           ))}
         </div>
@@ -337,13 +345,14 @@ function DeliveryBand() {
       <div className="wrap" style={{ position: 'relative' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 36, alignItems: 'center' }} className="hero-grid">
           <div>
-            <p className="eyebrow">✦ Always cheapest direct</p>
-            <h2 className="display-m" style={{ marginTop: 14, maxWidth: 440 }}>Buy direct, get an extra <span style={{ color: 'var(--cyan)' }}>10% off</span>.</h2>
+            <p className="eyebrow">✦ Shop where you already are</p>
+            <h2 className="display-m" style={{ marginTop: 14, maxWidth: 440 }}>Checkout on <span style={{ color: 'var(--cyan)' }}>Shopee &amp; TikTok Shop</span>.</h2>
             <p style={{ color: 'var(--muted)', marginTop: 14, maxWidth: 460, fontSize: 15.5 }}>
-              Order straight from <b style={{ color: '#fff' }}>shop.cheffyscrystals.com</b> and your <b style={{ color: 'var(--cyan)' }}>10% direct discount</b> is applied automatically — it's always the best price you'll find. We hand-pack every parcel and ship nationwide via J&amp;T, Shopee &amp; TikTok.
+              Order through <b style={{ color: '#fff' }}>Shopee</b> or <b style={{ color: 'var(--cyan)' }}>TikTok Shop</b> for familiar payment options, buyer protection, and live order tracking. We hand-pack every parcel and ship nationwide via J&amp;T.
             </p>
             <div style={{ display: 'flex', gap: 14, marginTop: 24, flexWrap: 'wrap', alignItems: 'center' }}>
-              <a className="btn btn--neon" href={withUtm(shopUrl, 'homepage_delivery_band')} target="_blank" rel="noopener">Buy direct &amp; save 10% <Ic.arrow/></a>
+              <a className="btn btn--neon" href={withUtm(shopeeUrl, 'homepage_delivery_band_shopee')} target="_blank" rel="noopener">Shop on Shopee <Ic.arrow/></a>
+              <a className="btn btn--ghost" href={withUtm(tiktokUrl, 'homepage_delivery_band_tiktok')} target="_blank" rel="noopener">Shop on TikTok <Ic.arrow/></a>
               <span className="chip" style={{ background: 'rgba(52,227,255,.12)', color: 'var(--cyan)', boxShadow: 'inset 0 0 0 1px rgba(52,227,255,.3)' }}>
                 <Ic.pin width="14" height="14"/> Nationwide delivery
               </span>
@@ -371,6 +380,48 @@ function DeliveryBand() {
   );
 }
 
+function PhysicalStore() {
+  const address = "LunarSoul PH, 3F 5650 Don Pedro, Poblacion, Makati";
+  const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`;
+  return (
+    <section id="visit-store" className="bg-aura-2 section" style={{ scrollMarginTop: 90 }}>
+      <div className="wrap">
+        <div style={{ display: 'grid', gridTemplateColumns: '.9fr 1.1fr', gap: 'clamp(28px,5vw,64px)', alignItems: 'center' }} className="hero-grid">
+          <div>
+            <p className="eyebrow" style={{ color: 'var(--price)' }}>✦ Visit us in person</p>
+            <h2 className="display-l" style={{ marginTop: 14, color: 'var(--ink)' }}>Find us at LunarSoul PH.</h2>
+            <p style={{ color: 'var(--ink-soft)', marginTop: 16, fontSize: 16, lineHeight: 1.7, maxWidth: 460 }}>
+              No shipping wait — our collection is carried in person by LunarSoul PH, a crystal &amp; wellness store in Makati. Come pick your own stones.
+            </p>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginTop: 22 }}>
+              <span style={{ color: 'var(--price)', flexShrink: 0, marginTop: 2 }}><Ic.pin width="18" height="18"/></span>
+              <div>
+                <h3 style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 17, color: 'var(--ink)', margin: 0 }}>LunarSoul PH</h3>
+                <div style={{ color: 'var(--ink-soft)', fontSize: 15, marginTop: 2 }}>3F 5650 Don Pedro, Poblacion, Makati</div>
+                <div style={{ color: 'var(--ink-soft)', fontSize: 15, marginTop: 6 }}>Open daily, 1PM–10PM</div>
+                <div style={{ color: 'var(--ink-soft)', fontSize: 15, marginTop: 2 }}>Questions first? Call/text <a href="tel:+639258865615" style={{ color: 'var(--price)', textDecoration: 'underline' }}>0925 886 5615</a></div>
+              </div>
+            </div>
+            <a className="btn btn--neon" href={directionsUrl} target="_blank" rel="noopener" style={{ textDecoration: 'none', marginTop: 24, display: 'inline-flex' }}>Get directions <Ic.arrow/></a>
+          </div>
+          <div style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', aspectRatio: '4/3', boxShadow: 'var(--shadow-card)' }}>
+            <iframe
+              title="LunarSoul PH map location"
+              src={mapSrc}
+              width="100%"
+              height="100%"
+              style={{ border: 0, display: 'block' }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Reviews() {
   return (
     <section id="reviews" className="bg-cosmic section">
@@ -383,7 +434,7 @@ function Reviews() {
           <div style={{ display: 'flex', gap: 7, alignItems: 'center' }}>
             <span style={{ display: 'flex', color: 'var(--gold)' }}>{[0,1,2,3,4].map((i) => <Ic.star key={i}/>)}</span>
             <span style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 16, color: '#fff' }}>4.9</span>
-            <span style={{ color: 'var(--muted)', fontSize: 14 }}>· 2,400+ ratings</span>
+            <a href={withUtm(shopeeUrl, 'reviews_rating_count')} target="_blank" rel="noopener" style={{ color: 'var(--muted)', fontSize: 14, textDecoration: 'underline', textUnderlineOffset: '3px' }}>· 2,400+ ratings on Shopee</a>
           </div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 20 }} className="reviews-grid">
@@ -470,12 +521,12 @@ export default function Home() {
         <Hero onShop={() => document.getElementById('shop')?.scrollIntoView({ behavior: 'smooth' })}/>
         <Shop/>
         <TrustBar/>
+        <PhysicalStore/>
         <EmailCapture/>
         <AsSeenTikTok/>
         <Guide/>
         <Reviews/>
         <DeliveryBand/>
-        <Events/>
         <JournalTeaser/>
         <StoryTeaser/>
       </main>

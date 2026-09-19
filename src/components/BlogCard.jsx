@@ -13,7 +13,7 @@ export function BlogCard({ b, big }) {
   return (
     <Link to={`/blog/${b.slug}`} className="blog-card reveal" style={big ? { gridColumn: '1 / -1' } : null}>
       <div className="blog-card__media" style={big ? { aspectRatio: '21/9' } : null}>
-        <img src={b.img} alt={b.title} loading="lazy"/>
+        <img src={b.img} alt={b.imgAlt || b.title} loading="lazy"/>
         <span className="chip blog-cat" style={{ '--cat-c': BLOG_CAT_COLOR[b.cat] || 'var(--cyan)' }}>{b.cat}</span>
       </div>
       <div className="blog-card__body">

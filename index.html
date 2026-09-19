@@ -6,11 +6,15 @@
 
     <!-- Primary SEO -->
     <title>Cheffy's Crystals — Authentic Healing Crystals Philippines | From ₱20</title>
-    <meta name="description" content="Shop authentic healing crystals in the Philippines starting at ₱20. Hand-checked by Cheffy, shipped nationwide. 4.9★ · 80k+ pieces sold. Buy direct and save 10%."/>
+    <meta name="description" content="Shop authentic healing crystals in the Philippines starting at ₱20. Hand-checked by Cheffy, shipped nationwide. 4.9★ · 80k+ pieces sold. Order on Shopee or TikTok Shop."/>
     <meta name="keywords" content="crystals philippines, healing crystals manila, crystal shop cavite, affordable gemstones philippines, authentic crystals shop, buy crystals online philippines, crystal healing philippines, amethyst, rose quartz, clear quartz, black tourmaline, citrine philippines, crystal beginner guide, rune reading philippines, oracle reading philippines, crystal consultation philippines"/>
     <meta name="author" content="Cheffy"/>
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
     <link rel="canonical" href="https://cheffyscrystals.com/"/>
+
+    <!-- Font loading — avoid a render-blocking round trip to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 
     <!-- Open Graph -->
     <meta property="og:type" content="website"/>
@@ -53,7 +57,7 @@
           "url": "https://cheffyscrystals.com",
           "logo": "https://cheffyscrystals.com/assets/logo.png",
           "image": "https://cheffyscrystals.com/assets/cheffy-booth-neon.jpg",
-          "description": "Affordable, authentic healing crystals sourced with love and sold with honesty. Founded in 2020 by Cheffy in Imus, Cavite. Shipping nationwide across the Philippines via Shopee, TikTok Shop, and direct store. Also offers 1:1 crystal consultations, rune readings, and corporate wellness speaking engagements.",
+          "description": "Affordable, authentic healing crystals sourced with love and sold with honesty. Founded in 2020 by Cheffy in Imus, Cavite. Shipping nationwide across the Philippines via Shopee and TikTok Shop. Also offers 1:1 crystal consultations, rune readings, and corporate wellness speaking engagements.",
           "foundingDate": "2020",
           "founder": {
             "@type": "Person",
@@ -76,6 +80,7 @@
             { "@type": "City", "name": "Davao" }
           ],
           "priceRange": "₱20–₱500",
+          "telephone": "+639258865615",
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.9",
@@ -86,22 +91,22 @@
           "sameAs": [
             "https://shopee.ph/cheffyyyy",
             "https://www.tiktok.com/@cheffyscrystals",
-            "https://www.instagram.com/cheffyscrystals/"
+            "https://www.instagram.com/cheffyscrystals/",
+            "https://www.facebook.com/cheffyyyy/"
           ],
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "customer service",
-            "availableLanguage": ["English", "Filipino"]
-          },
+          "contactPoint": [
+            { "@type": "ContactPoint", "contactType": "customer service", "telephone": "+639258865615", "availableLanguage": ["English", "Filipino"] },
+            { "@type": "ContactPoint", "contactType": "customer service", "telephone": "+639927859457", "availableLanguage": ["English", "Filipino"] }
+          ],
           "hasOfferCatalog": {
             "@type": "OfferCatalog",
             "name": "Healing Crystals Philippines",
             "itemListElement": [
-              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Amethyst Tumbled Stone", "description": "Calming crystal for stress relief and better sleep. Starting at PHP 35." } },
-              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Clear Quartz", "description": "Master healer crystal for clarity and intention. Starting at PHP 40." } },
-              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Black Tourmaline", "description": "Protection crystal for grounding and shielding negative energy. Starting at PHP 45." } },
-              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Citrine Raw", "description": "Abundance and joy crystal. Starting at PHP 40." } },
-              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Crystal Chips", "description": "Small healing crystal chips starting at PHP 20 — the most affordable crystals in the Philippines." } }
+              { "@type": "Offer", "availableAtOrFrom": { "@id": "https://cheffyscrystals.com/#lunarsoul-store" }, "itemOffered": { "@type": "Product", "name": "Amethyst Tumbled Stone", "description": "Calming crystal for stress relief and better sleep. Starting at PHP 35." } },
+              { "@type": "Offer", "availableAtOrFrom": { "@id": "https://cheffyscrystals.com/#lunarsoul-store" }, "itemOffered": { "@type": "Product", "name": "Clear Quartz", "description": "Master healer crystal for clarity and intention. Starting at PHP 40." } },
+              { "@type": "Offer", "availableAtOrFrom": { "@id": "https://cheffyscrystals.com/#lunarsoul-store" }, "itemOffered": { "@type": "Product", "name": "Black Tourmaline", "description": "Protection crystal for grounding and shielding negative energy. Starting at PHP 45." } },
+              { "@type": "Offer", "availableAtOrFrom": { "@id": "https://cheffyscrystals.com/#lunarsoul-store" }, "itemOffered": { "@type": "Product", "name": "Citrine Raw", "description": "Abundance and joy crystal. Starting at PHP 40." } },
+              { "@type": "Offer", "availableAtOrFrom": { "@id": "https://cheffyscrystals.com/#lunarsoul-store" }, "itemOffered": { "@type": "Product", "name": "Crystal Chips", "description": "Small healing crystal chips starting at PHP 20 — the most affordable crystals in the Philippines." } }
             ]
           }
         },
@@ -115,6 +120,30 @@
             "@type": "SearchAction",
             "target": "https://cheffyscrystals.com/blog?q={search_term_string}",
             "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "Store",
+          "@id": "https://cheffyscrystals.com/#lunarsoul-store",
+          "name": "LunarSoul PH",
+          "description": "Retail partner in Makati that carries Cheffy's Crystals' collection in person — a separate business from Cheffy's Crystals itself.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "3F 5650 Don Pedro, Poblacion",
+            "addressLocality": "Makati",
+            "addressRegion": "Metro Manila",
+            "addressCountry": "PH"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 14.5641811,
+            "longitude": 121.0316392
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "13:00",
+            "closes": "22:00"
           }
         }
       ]
